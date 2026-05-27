@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Lanka — Group Itinerary · Aug 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0c;
+    --paper: #f5f2eb;
+    --paper-dark: #ede9df;
+    --accent: #c8601a;
+    --accent-light: #f0e8dc;
+    --muted: #7a7670;
+    --border: rgba(14,14,12,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 56px; background: var(--ink); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-brand { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.18em; color: rgba(255,255,255,0.9); text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: rgba(255,255,255,0.45); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: rgba(255,255,255,0.9); }
+
+  #hero { min-height: 100vh; background: var(--ink); display: flex; flex-direction: column; justify-content: flex-end; padding: 5rem 3rem 4rem; position: relative; overflow: hidden; }
+  .hero-rule { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.03) 79px, rgba(255,255,255,0.03) 80px); pointer-events: none; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+  .hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 400; line-height: 1.0; color: #fff; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-meta { margin-top: 2.5rem; display: flex; gap: 3rem; align-items: flex-end; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+  .hero-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: rgba(255,255,255,0.4); text-transform: uppercase; line-height: 1.6; }
+  .hero-meta-item strong { display: block; color: rgba(255,255,255,0.8); font-weight: 400; font-size: 12px; }
+  .hero-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); align-self: center; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  #intro { padding: 6rem 3rem; max-width: 900px; }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 2rem; }
+  .intro-headline { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 2rem; }
+  .intro-headline em { font-style: italic; }
+  .intro-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+  .intro-stats { margin-top: 3rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .stat-cell { padding: 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; line-height: 1; color: var(--ink); margin-bottom: 0.4rem; }
+  .stat-desc { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+
+  #phases { border-top: 1px solid var(--border); }
+  .phase-block { border-bottom: 1px solid var(--border); }
+  .phase-header { display: grid; grid-template-columns: 80px 1fr auto; align-items: center; gap: 2rem; padding: 2rem 3rem; cursor: pointer; transition: background 0.2s; user-select: none; }
+  .phase-header:hover { background: var(--paper-dark); }
+  .phase-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent); }
+  .phase-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; }
+  .phase-name em { font-style: italic; }
+  .phase-days { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+  .phase-toggle { font-family: var(--mono); font-size: 18px; color: var(--muted); transition: transform 0.3s; margin-left: 1rem; }
+  .phase-toggle.open { transform: rotate(45deg); }
+  .phase-body { display: none; padding: 0 3rem 3rem; }
+  .phase-body.open { display: block; }
+
+  .day-row { display: grid; grid-template-columns: 120px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .day-row:last-child { border-bottom: none; }
+  .day-left { padding-top: 4px; }
+  .day-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .day-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; line-height: 1.3; }
+  .day-title em { font-style: italic; color: var(--accent); }
+  .time-block { display: flex; gap: 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .time-block:last-of-type { border-bottom: none; }
+  .tb-time { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--accent); min-width: 52px; padding-top: 3px; flex-shrink: 0; }
+  .tb-main { font-size: 14px; font-weight: 400; color: var(--ink); line-height: 1.5; }
+  .tb-sub { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+  .day-tip { margin-top: 1rem; padding: 0.75rem 1rem; background: var(--accent-light); border-left: 2px solid var(--accent); font-size: 12px; color: var(--ink); line-height: 1.6; }
+  .day-tip strong { font-weight: 500; }
+
+  #ledger { padding: 6rem 3rem; border-top: 1px solid var(--border); }
+  .ledger-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+  .ledger-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; text-align: left; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .ledger-table td { font-size: 14px; padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; }
+  .ledger-table td:last-child { font-family: var(--mono); font-size: 12px; color: var(--accent); white-space: nowrap; }
+  .ledger-table tr:last-child td { border-bottom: none; font-weight: 500; padding-top: 1.25rem; }
+  .l-muted { color: var(--muted) !important; font-size: 12px !important; }
+
+  /* GAMES */
+  #games { border-top: 1px solid var(--border); }
+  .games-intro { padding: 6rem 3rem 3rem; max-width: 900px; }
+  #surf-game-wrap { padding: 0 3rem 4rem; border-bottom: 1px solid var(--border); }
+  .game-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; }
+  .game-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .game-title em { font-style: italic; }
+  .game-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; font-family: var(--mono); letter-spacing: 0.04em; }
+  #surf-canvas { display: block; width: 100%; height: 220px; background: #0a1628; border: 1px solid var(--border); cursor: pointer; }
+  .game-hud { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .hud-item { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+  .hud-val { color: var(--ink); font-size: 14px; font-weight: 400; margin-left: 8px; }
+  .hud-val.accent { color: var(--accent); }
+  .game-btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: all 0.2s; }
+  .game-btn:hover { background: var(--ink); color: var(--paper); }
+  .game-instructions { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; margin-top: 0.75rem; line-height: 1.7; }
+
+  /* QUIZ */
+  #quiz-wrap { padding: 4rem 3rem; border-bottom: 1px solid var(--border); }
+  .quiz-progress { display: flex; gap: 6px; margin-bottom: 2rem; }
+  .qp-dot { height: 3px; flex: 1; background: var(--border); transition: background 0.3s; }
+  .qp-dot.done { background: var(--accent); }
+  .qp-dot.current { background: var(--ink); }
+  .quiz-q-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .quiz-question { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 400; line-height: 1.3; margin-bottom: 2rem; }
+  .quiz-question em { font-style: italic; color: var(--accent); }
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }
+  .quiz-opt { font-size: 14px; padding: 1rem 1.25rem; border: 1px solid var(--border); background: transparent; color: var(--ink); cursor: pointer; text-align: left; font-family: var(--sans); font-weight: 300; transition: all 0.15s; line-height: 1.4; }
+  .quiz-opt:hover:not(:disabled) { border-color: var(--ink); background: var(--paper-dark); }
+  .quiz-opt.correct { border-color: #3B6D11; background: #EAF3DE; color: #27500A; }
+  .quiz-opt.wrong { border-color: #993C1D; background: #FAECE7; color: #712B13; }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; min-height: 1.5rem; margin-bottom: 1.5rem; line-height: 1.6; }
+  .quiz-feedback.good { color: #3B6D11; }
+  .quiz-feedback.bad { color: #993C1D; }
+  .quiz-next { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: all 0.2s; display: none; }
+  .quiz-next:hover { background: var(--ink); color: var(--paper); }
+  .quiz-result { text-align: center; padding: 3rem 0; display: none; }
+  .qr-score { font-family: var(--serif); font-size: 5rem; font-weight: 400; color: var(--ink); line-height: 1; }
+  .qr-score em { font-style: italic; color: var(--accent); }
+  .qr-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin: 0.5rem 0 1.5rem; }
+  .qr-verdict { font-family: var(--serif); font-size: 1.3rem; font-style: italic; color: var(--muted); margin-bottom: 2rem; }
+
+  /* VELO REACTION GAME */
+  #velo-wrap { padding: 4rem 3rem; border-bottom: 1px solid var(--border); }
+  #velo-arena {
+    position: relative; width: 100%; height: 260px;
+    background: #0a1a0a; border: 1px solid var(--border);
+    overflow: hidden; cursor: crosshair;
+  }
+  #velo-arena.waiting { cursor: default; }
+  .velo-grid-line {
+    position: absolute; background: rgba(255,255,255,0.03);
+  }
+  #velo-pack {
+    position: absolute;
+    width: 88px; height: 88px;
+    display: none;
+    cursor: crosshair;
+    transform: translate(-50%, -50%);
+    transition: none;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+  }
+
+  #velo-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .vo-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .vo-big {
+    font-family: var(--serif); font-size: 2.8rem; font-weight: 400;
+    color: rgba(255,255,255,0.15); font-style: italic; text-align: center;
+    line-height: 1.1;
+  }
+  .vo-big.active { color: rgba(255,255,255,0.08); }
+
+  #velo-result-flash {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; opacity: 0; transition: opacity 0.15s;
+  }
+  .vrf-inner {
+    font-family: var(--mono); font-size: 2rem; letter-spacing: 0.1em;
+    font-weight: 400; text-transform: uppercase;
+  }
+  .vrf-inner.hit { color: #5DCAA5; }
+  .vrf-inner.miss { color: #D85A30; }
+
+  .velo-hud { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .velo-scores-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .velo-scores-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; text-align: left; padding: 0.5rem 0.75rem 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .velo-scores-table td { font-size: 13px; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--ink); font-family: var(--mono); }
+  .velo-scores-table tr:last-child td { border-bottom: none; }
+  .velo-rank-1 td:nth-child(3) { color: var(--accent); font-weight: 500; }
+  #velo-leaderboard { margin-top: 1rem; }
+
+  /* REACH */
+  #reach { background: var(--ink); padding: 5rem 3rem 4rem; color: #fff; }
+  .reach-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 2rem; }
+  .reach-headline { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; color: #fff; margin-bottom: 3rem; }
+  .reach-headline em { font-style: italic; color: var(--accent); }
+  .reach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.1); border-left: 1px solid rgba(255,255,255,0.1); margin-bottom: 4rem; }
+  .reach-cell { padding: 1.75rem; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .rc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 0.6rem; }
+  .rc-val { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .rc-val strong { font-weight: 500; color: #fff; }
+  .reach-footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+  .rf-brand { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+  .rf-sign { font-family: var(--serif); font-size: 1.5rem; font-style: italic; color: rgba(255,255,255,0.5); }
+
+
+
+  /* ── LOGIN SCREEN ── */
+  #login-screen {
+    position: fixed; inset: 0; z-index: 7000;
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+  }
+  #login-screen.hidden { display: none; }
+
+  .login-box {
+    width: 100%; max-width: 420px;
+    padding: 2.5rem 2rem;
+  }
+  .login-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .login-title {
+    font-family: var(--serif); font-size: 2rem;
+    font-weight: 400; margin-bottom: 0.5rem;
+  }
+  .login-title em { font-style: italic; }
+  .login-sub {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); margin-bottom: 2rem;
+    letter-spacing: 0.06em;
+  }
+  .name-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; margin-bottom: 1.5rem;
+  }
+  .name-btn {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--ink);
+    font-family: var(--serif); font-size: 1rem;
+    cursor: pointer; text-align: left;
+    transition: all 0.15s; position: relative;
+  }
+  .name-btn:hover { border-color: var(--ink); background: var(--paper-dark); }
+  .name-btn.selected { border-color: var(--accent); background: var(--accent-light); }
+  .name-btn .maybe-tag {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--muted); letter-spacing: 0.1em;
+    text-transform: uppercase; display: block;
+    margin-top: 2px;
+  }
+  .pw-row {
+    display: flex; gap: 8px; margin-bottom: 1rem;
+  }
+  .pw-input {
+    flex: 1; padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--paper); color: var(--ink);
+    font-family: var(--mono); font-size: 13px;
+    letter-spacing: 0.1em; outline: none;
+    transition: border-color 0.15s;
+  }
+  .pw-input:focus { border-color: var(--ink); }
+  .pw-input.error { border-color: #993C1D; }
+  .login-submit {
+    padding: 12px 28px;
+    border: 1px solid var(--ink);
+    background: transparent; color: var(--ink);
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .login-submit:hover { background: var(--ink); color: var(--paper); }
+  .login-error {
+    font-family: var(--mono); font-size: 11px;
+    color: #993C1D; letter-spacing: 0.06em;
+    min-height: 1.4rem; margin-bottom: 0.5rem;
+  }
+  .login-hint {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.06em;
+    margin-top: 1rem; line-height: 1.6;
+  }
+
+  /* logged-in badge in nav */
+  #user-badge {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--accent);
+    text-transform: uppercase; cursor: pointer;
+    display: none;
+  }
+  #user-badge:hover { opacity: 0.7; }
+
+  /* ── SUGGESTIONS & POLL ── */
+  #community {
+    border-top: 1px solid var(--border);
+    padding: 6rem 3rem;
+  }
+  .comm-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin-top: 2rem;
+  }
+  @media (max-width: 700px) { .comm-grid { grid-template-columns: 1fr; } }
+
+  .comm-panel { }
+  .comm-panel-title {
+    font-family: var(--serif); font-size: 1.4rem;
+    font-weight: 400; margin-bottom: 0.5rem;
+  }
+  .comm-panel-title em { font-style: italic; }
+  .comm-panel-sub {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); letter-spacing: 0.06em;
+    margin-bottom: 1.25rem; line-height: 1.6;
+  }
+
+  /* suggestions */
+  .suggestion-input {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 13px;
+    font-weight: 300; outline: none; resize: vertical;
+    min-height: 80px; transition: border-color 0.15s;
+    display: block; margin-bottom: 8px;
+  }
+  .suggestion-input:focus { border-color: var(--ink); }
+  .comm-btn {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 10px 20px; border: 1px solid var(--ink);
+    background: transparent; color: var(--ink);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .comm-btn:hover { background: var(--ink); color: var(--paper); }
+  .comm-btn:disabled { opacity: 0.35; cursor: default; }
+  .suggestion-feed { margin-top: 1.25rem; }
+  .suggestion-item {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .suggestion-item:last-child { border-bottom: none; }
+  .si-author {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 3px;
+  }
+  .si-text { font-size: 13px; color: var(--ink); line-height: 1.5; }
+  .si-time { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .feed-empty {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); letter-spacing: 0.06em;
+    padding: 1rem 0;
+  }
+
+  /* poll */
+  .poll-item { margin-bottom: 12px; }
+  .poll-bar-wrap {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 4px;
+  }
+  .poll-bar-bg {
+    flex: 1; height: 6px; background: var(--border);
+    border-radius: 3px; overflow: hidden;
+  }
+  .poll-bar-fill {
+    height: 100%; border-radius: 3px;
+    background: var(--accent); transition: width 0.4s ease;
+  }
+  .poll-label {
+    display: flex; justify-content: space-between;
+    align-items: center;
+  }
+  .poll-option-text { font-size: 13px; color: var(--ink); }
+  .poll-vote-btn {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border: 1px solid var(--border);
+    background: transparent; color: var(--muted);
+    cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  }
+  .poll-vote-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .poll-vote-btn.voted { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+  .poll-count {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); min-width: 32px; text-align: right;
+  }
+  .login-required-note {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); letter-spacing: 0.06em;
+    padding: 1rem; border: 1px dashed var(--border);
+    text-align: center;
+  }
+
+  /* ── LANDING SCREEN ── */
+  #landing {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0a1628;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  #landing-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  .landing-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    opacity: 1; transition: opacity 0.4s;
+  }
+  .landing-content.hide { opacity: 0; pointer-events: none; }
+  .landing-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    animation: fadeUp 1s 0.3s both;
+  }
+  .landing-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 400; color: #fff;
+    line-height: 1; margin-bottom: 0.25rem;
+    animation: fadeUp 1s 0.5s both;
+  }
+  .landing-title em { font-style: italic; color: var(--accent); }
+  .landing-sub {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    font-style: italic; color: rgba(255,255,255,0.4);
+    margin-bottom: 3rem;
+    animation: fadeUp 1s 0.7s both;
+  }
+  .landing-btn {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 16px 48px;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: transparent; color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    animation: fadeUp 1s 0.9s both;
+    position: relative; overflow: hidden;
+  }
+  .landing-btn::before {
+    content: ''; position: absolute;
+    inset: 0; background: var(--accent);
+    transform: translateX(-101%);
+    transition: transform 0.3s ease;
+  }
+  .landing-btn:hover::before { transform: translateX(0); }
+  .landing-btn span { position: relative; z-index: 1; }
+  .landing-btn:hover { border-color: var(--accent); }
+
+  /* wave sweep overlay */
+  #wave-sweep {
+    position: fixed; inset: 0; z-index: 9998;
+    pointer-events: none; opacity: 0;
+  }
+  #wave-sweep canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    #hero, #intro, #ledger, .games-intro, #surf-game-wrap, #quiz-wrap, #velo-wrap, #reach { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .phase-header { padding: 1.5rem 1.25rem; grid-template-columns: 60px 1fr auto; gap: 1rem; }
+    .phase-body { padding: 0 1.25rem 2rem; }
+    .day-row { grid-template-columns: 1fr; gap: 0.75rem; }
+    .intro-stats { grid-template-columns: repeat(2, 1fr); }
+    .reach-grid { grid-template-columns: 1fr; }
+    .reach-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .quiz-options { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="hidden">
+  <div class="login-box">
+    <p class="login-label">Mandem Sri Lanka Trip · 2026</p>
+    <h2 class="login-title">Who are<br><em>you?</em></h2>
+    <p class="login-sub">Select your name then enter your password.</p>
+    <div class="name-grid" id="name-grid">
+      <button class="name-btn" onclick="selectName(this,'Emanuele')">Emanuele 👑</button>
+      <button class="name-btn" onclick="selectName(this,'Ashraf')">Ashraf</button>
+      <button class="name-btn" onclick="selectName(this,'Louis')">Louis</button>
+      <button class="name-btn" onclick="selectName(this,'Hikesh')">Hikesh</button>
+      <button class="name-btn" onclick="selectName(this,'Tarek')">Tarek</button>
+      <button class="name-btn" onclick="selectName(this,'Jack')">Jack</button>
+      <button class="name-btn" onclick="selectName(this,'Ossama')">Ossama</button>
+      <button class="name-btn" onclick="selectName(this,'Nico')">Nico<span class="maybe-tag">Maybe</span></button>
+      <button class="name-btn" onclick="selectName(this,'Shyam')">Shyam<span class="maybe-tag">Maybe</span></button>
+    </div>
+    <div class="pw-row">
+      <input type="password" class="pw-input" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+      <button class="login-submit" onclick="tryLogin()">Enter</button>
+    </div>
+    <div class="login-error" id="login-error"></div>
+    <p class="login-hint">Password sent separately by the trip organiser.</p>
+  </div>
+</div>
+<!-- LANDING SCREEN -->
+<div id="landing">
+  <canvas id="landing-canvas"></canvas>
+  <div class="landing-content" id="landing-content">
+    <p class="landing-eyebrow">Mandem Sri Lanka Trip · August 2026 · Classified</p>
+    <h1 class="landing-title">Sri Lanka.<br><em>14 days.</em></h1>
+    <p class="landing-sub">The official trip document.</p>
+    <button class="landing-btn" id="enter-btn" onclick="triggerWave()"><span>🤙 Enter the trip</span></button>
+  </div>
+</div>
+
+<!-- WAVE SWEEP OVERLAY -->
+<div id="wave-sweep">
+  <canvas id="sweep-canvas"></canvas>
+</div>
+
+<nav>
+  <span class="nav-brand">Mandem Sri Lanka Trip · 2026</span>
+  <span id="user-badge" onclick="logout()">← logout</span>
+  <ul class="nav-links">
+    <li><a href="#intro">Brief</a></li>
+    <li><a href="#phases">Itinerary</a></li>
+    <li><a href="#ledger">Budget</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#reach">Logistics</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-rule"></div>
+  <p class="hero-eyebrow">Mandem Sri Lanka Trip · Vol. I · Aug / Sep 2026</p>
+  <h1 class="hero-title">Sri Lanka.<br><em>14 days.</em></h1>
+  <div class="hero-meta">
+    <div class="hero-meta-item">Departure<strong>London Heathrow</strong></div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">Home Base<strong>Arugam Bay</strong></div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">The Mandem<strong>9 deep · Ages 24–25</strong></div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">Budget<strong>~£3,000 pp</strong></div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">Depart London<strong>Aug 13–14, 2026</strong></div>
+  </div>
+</section>
+
+<section id="intro">
+  <p class="section-label">The Brief</p>
+  <h2 class="intro-headline">Surf. Safari. Perahera.<br><em>Two weeks, one island.</em></h2>
+  <p class="intro-body">Eight days of private surf instruction, a two-day leopard safari at Yala, the Kandy Esala Perahera — one of Asia's greatest festivals — Sigiriya Rock Fortress, cloud forest trekking through the Knuckles, deep sea fishing, scuba diving and cliff jumping. One villa in Arugam Bay. Everything else radiates out.</p>
+  <div class="intro-stats">
+    <div class="stat-cell"><div class="stat-num">8</div><div class="stat-desc">Surf sessions</div></div>
+    <div class="stat-cell"><div class="stat-num">4</div><div class="stat-desc">Headline experiences</div></div>
+    <div class="stat-cell"><div class="stat-num">2</div><div class="stat-desc">Overnight excursions</div></div>
+    <div class="stat-cell"><div class="stat-num">14</div><div class="stat-desc">Days on the island</div></div>
+  </div>
+</section>
+
+
+<!-- CREW -->
+<section id="crew" style="padding: 0 3rem 6rem; max-width: 900px;">
+  <p class="section-label">The Mandem</p>
+  <h2 class="intro-headline">Who's<br><em>on the trip.</em></h2>
+  <div style="border-top: 1px solid var(--border); border-left: 1px solid var(--border); display: grid; grid-template-columns: repeat(3, 1fr);">
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Emanuele 👑</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Ashraf</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Louis</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Hikesh</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Tarek</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Jack</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink);">Ossama</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Confirmed</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink); opacity: 0.5;">Nico</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Maybe</div>
+    </div>
+    <div style="padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink); opacity: 0.5;">Shyam</div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;">Maybe</div>
+    </div>
+  </div>
+</section>
+
+<section id="phases">
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">01 / 06</span><span class="phase-name">Arrival &amp; <em>Orientation</em></span><span class="phase-days">Days 1–2</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 1</div><div class="day-title">Land Colombo —<br><em>transfer south</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">Morning</div><div><div class="tb-main">Land at Bandaranaike International, Colombo</div><div class="tb-sub">Have your e-visa printed or downloaded. Never drive to A-Bay at night.</div></div></div>
+          <div class="time-block"><div class="tb-time">Midday</div><div><div class="tb-main">Private 10-seat minivan to Arugam Bay — ~6.5hrs</div><div class="tb-sub">Pre-book through your villa host. Stop in Monaragala for food.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Arrive villa — first beach walk</div><div class="tb-sub">Eat at Sooriya Restaurant or Gecko Cafe. Both excellent seafood within walking distance.</div></div></div>
+          <div class="day-tip"><strong>Book in advance:</strong> A 10-seat van from Colombo costs ~£80–100 total. Arrange through the villa before you fly.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 2</div><div class="day-title">First surf +<br><em>explore A-Bay</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">Morning</div><div><div class="tb-main">Walk to Main Point — just watch the break first</div><div class="tb-sub">Read the waves before you paddle. See where locals sit. This is how you learn a break.</div></div></div>
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">First instructor session at Baby Point — 2hrs</div><div class="tb-sub">Sand pop-up practice first, then white water only. Set expectations for the week.</div></div></div>
+          <div class="time-block"><div class="tb-time">Afternoon</div><div><div class="tb-main">Explore A-Bay — rent motorbikes for the trip</div><div class="tb-sub">~£5–8 per bike per day. Non-negotiable. You'll use them for everything.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Group dinner — Hideaway Restaurant</div><div class="tb-sub">Best crab curry in Arugam Bay. Order the coconut rice. Sit outside.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">02 / 06</span><span class="phase-name">Surf <em>Foundation</em></span><span class="phase-days">Days 3–5</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 3</div><div class="day-title">Surf +<br><em>Elephant Rock</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">Instructor session — Baby Point / Pottuvil Point</div><div class="tb-sub">Focus: consistent pop-up, riding whitewater end-to-end, reading waves.</div></div></div>
+          <div class="time-block"><div class="tb-time">Afternoon</div><div><div class="tb-main">Motorbike to Elephant Rock — cliff jumping</div><div class="tb-sub">~20 min ride. 5m, 8m, 12m jumps into the lagoon. Bring a waterproof bag.</div></div></div>
+          <div class="time-block"><div class="tb-time">16:30</div><div><div class="tb-main">Optional late afternoon free surf at sunset</div><div class="tb-sub">Wind drops, conditions clean back up. Best light of the day.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Villa pool — rest and food</div><div class="tb-sub">Surfing in 30°C heat is deceptive. Rest without guilt.</div></div></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 4</div><div class="day-title">Surf + <em>Kudumbigala</em><br>jungle monastery</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">Instructor session — first green wave attempts</div><div class="tb-sub">This is the breakthrough session. Instructors push you into unbroken waves for the first time.</div></div></div>
+          <div class="time-block"><div class="tb-time">Afternoon</div><div><div class="tb-main">Motorbike to Kudumbigala ancient jungle monastery</div><div class="tb-sub">2,000 year old rock monastery buried in the jungle. Completely deserted. Climb the rocks at sunset for extraordinary views. One of the most atmospheric places in eastern Sri Lanka.</div></div></div>
+          <div class="time-block"><div class="tb-time">Sunset</div><div><div class="tb-main">Pottuvil lagoon sunset drinks</div><div class="tb-sub">Bring beers from the shop on the way back. Crocodiles visible from the bank.</div></div></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 5</div><div class="day-title">Free surf +<br><em>deep sea fishing</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">Morning</div><div><div class="tb-main">Free surf — no instructor, consolidate what you've learnt</div><div class="tb-sub">Some will want a rest morning. Let them.</div></div></div>
+          <div class="time-block"><div class="tb-time">13:00</div><div><div class="tb-main">Deep sea fishing charter — 4hrs offshore</div><div class="tb-sub">Book through local fishermen at the harbour. Target: yellowfin tuna, mahi mahi, barracuda.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Your catch cooked at Stardust Beach Hotel</div><div class="tb-sub">They'll cook whatever you bring. Best fish BBQ in A-Bay. Eat outside on the beach.</div></div></div>
+          <div class="day-tip"><strong>Negotiate as a group:</strong> A half-day charter should be £80–120 total, not per person.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">03 / 06</span><span class="phase-name">Yala <em>Safari</em></span><span class="phase-days">Days 6–7</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 6</div><div class="day-title">Drive to Yala —<br><em>afternoon game drive</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">Morning</div><div><div class="tb-main">Leisurely breakfast, pack for overnight</div></div></div>
+          <div class="time-block"><div class="tb-time">10:00</div><div><div class="tb-main">Drive to Yala — ~2hrs</div><div class="tb-sub">Pick up boxed lunches from A-Bay to eat en route.</div></div></div>
+          <div class="time-block"><div class="tb-time">12:00</div><div><div class="tb-main">Check into Yala Safari Camping — lunch at camp</div><div class="tb-sub">Website: srilankayalasafari.com — book 2–3 months ahead for August.</div></div></div>
+          <div class="time-block"><div class="tb-time">14:00</div><div><div class="tb-main">Afternoon game drive — 2pm to 6pm with Daya Safari</div><div class="tb-sub">Bronze package. Animals active at water sources as heat drops. Best chance of sloth bear sightings. Split into 2 jeeps.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Dinner at camp around the fire 🔥</div><div class="tb-sub">Communal fire, cold beers, debrief the drive. Early night — 5am tomorrow.</div></div></div>
+          <div class="day-tip"><strong>Daya Safari contact:</strong> dayasafari.com — Bronze package $412 for 8 people per drive (all-inclusive inc. park fees, drinks, binoculars). Book 2 jeeps.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 7</div><div class="day-title">Dawn drive 🐆 —<br><em>return to A-Bay</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">05:00</div><div><div class="tb-main">Wake up — jeeps depart at 5:30am</div><div class="tb-sub">The most important alarm of the entire trip. Leopards are most active at dawn. Do not sleep through it.</div></div></div>
+          <div class="time-block"><div class="tb-time">05:30</div><div><div class="tb-main">Dawn game drive — Daya Safari Bronze package</div><div class="tb-sub">First jeeps into the park. Peak leopard activity. The best wildlife window of the entire two weeks.</div></div></div>
+          <div class="time-block"><div class="tb-time">10:00</div><div><div class="tb-main">Back to camp — breakfast, check out</div></div></div>
+          <div class="time-block"><div class="tb-time">12:00</div><div><div class="tb-main">Drive back to Arugam Bay via Tissamaharama</div><div class="tb-sub">Stop for rice and curry in Tissa. Best local lunch on the route.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Back at villa — group debrief over beers</div><div class="tb-sub">Everyone will have a leopard story. One of the great evenings of the trip.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">04 / 06</span><span class="phase-name">Surf Progression,<br><em>Scuba &amp; Free Day</em></span><span class="phase-days">Days 8–10</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 8</div><div class="day-title">Green wave milestone +<br><em>swimming elephants</em> 🐘</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">Instructor session — green wave milestone</div><div class="tb-sub">Bodies rested after the safari break. This is when progression clicks. Focus: wave reading, lineup positioning, unassisted paddling.</div></div></div>
+          <div class="time-block"><div class="tb-time">16:30</div><div><div class="tb-main">Pottuvil Lagoon at sunset — wild elephants swimming 🐘</div><div class="tb-sub">One of only two places in Sri Lanka where you can watch wild elephants swim across the lagoon. 15-min tuk tuk from the villa. Free. Don't miss it.</div></div></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 9</div><div class="day-title">Surf + scuba +<br><em>first big night out</em> 🍻</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">Morning instructor session</div><div class="tb-sub">Stringing 2–3 rides per session now. Push towards consistent unassisted paddling.</div></div></div>
+          <div class="time-block"><div class="tb-time">14:00</div><div><div class="tb-main">Scuba intro dive off Arugam Bay</div><div class="tb-sub">2-tank dive off the point. Reef fish, rays, turtles. No experience needed for an intro dive.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">First big night out — Whiskey Point</div><div class="tb-sub">Beach party atmosphere. Better crowd and setting than the main strip.</div></div></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 10</div><div class="day-title"><em>Free day</em> —<br>no agenda</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">Morning</div><div><div class="tb-main">Sleep in — no alarm, no instructor, no plan</div><div class="tb-sub">Every lads trip needs a day like this.</div></div></div>
+          <div class="time-block"><div class="tb-time">Afternoon</div><div><div class="tb-main">Motorbike south — Panama village + Panama Beach</div><div class="tb-sub">One of the oldest inhabited villages in Sri Lanka. Empty beach, local food, zero tourists. 20 mins from A-Bay.</div></div></div>
+          <div class="time-block"><div class="tb-time">16:30</div><div><div class="tb-main">Optional sunset surf session</div><div class="tb-sub">Wind drops late afternoon. Some of the best free surf sessions happen now.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Easy villa night — order food in, early-ish bed</div><div class="tb-sub">Big couple of days coming up.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">05 / 06</span><span class="phase-name">Kandy Perahera,<br><em>Sigiriya &amp; Knuckles</em></span><span class="phase-days">Days 11–12</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 11</div><div class="day-title">Drive to Kandy —<br><em>Esala Perahera</em> 🐘</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">08:00</div><div><div class="tb-main">Drive A-Bay to Kandy — ~3.5hrs</div><div class="tb-sub">Stop at a village kade en route for hoppers and egg curry. Under £1pp.</div></div></div>
+          <div class="time-block"><div class="tb-time">12:00</div><div><div class="tb-main">Arrive Kandy — check in, explore town</div><div class="tb-sub">Walk the lake, visit the Temple of the Tooth, eat at a local restaurant on the Kandy strip.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Kandy Esala Perahera procession 🐘🔥</div><div class="tb-sub">One of the greatest spectacles in Asia. Beautifully decorated elephants, fire dancers, drummers and monks parading through candlelit streets. Runs August 23–27 in 2026. This is the cultural centrepiece of the entire trip.</div></div></div>
+          <div class="time-block"><div class="tb-time">Night</div><div><div class="tb-main">Overnight in Kandy</div><div class="tb-sub">Stay central — within walking distance of the procession route.</div></div></div>
+          <div class="day-tip"><strong>Perahera timing:</strong> The Final Randoli Perahera on August 27th is the most spectacular night. Time your overnight here accordingly. Get there early and find a good vantage point on the street.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 12</div><div class="day-title">Sigiriya Rock +<br><em>Knuckles jungle trek</em></div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">08:00</div><div><div class="tb-main">Drive Kandy to Sigiriya — ~2hrs</div><div class="tb-sub">Straight after breakfast. Arrive before the midday heat.</div></div></div>
+          <div class="time-block"><div class="tb-time">10:30</div><div><div class="tb-main">Sigiriya Rock Fortress — allow 2.5hrs</div><div class="tb-sub">1,200 steps to the summit of a 200m volcanic rock. 5th century royal palace at the top. Views across the jungle are extraordinary. Entry £22pp. Watch for hornets near the mirror wall.</div></div></div>
+          <div class="time-block"><div class="tb-time">14:00</div><div><div class="tb-main">Drive to Knuckles Mountain Range — ~1.5hrs</div><div class="tb-sub">South through Matale. Tea plantations line the road before you leave the van.</div></div></div>
+          <div class="time-block"><div class="tb-time">15:30</div><div><div class="tb-main">Mini World's End → Corbett's Gap jungle trek — 2–3hrs</div><div class="tb-sub">Dense cloud forest, waterfalls, river crossings, cliff edge views. Pre-arranged local guide essential — £15–20 total for the group. Tuck trousers into socks for leeches.</div></div></div>
+          <div class="time-block"><div class="tb-time">18:00</div><div><div class="tb-main">Waterfall swim at end of trail</div><div class="tb-sub">Cold freshwater after a full day of adventures. One of the best moments of the trip.</div></div></div>
+          <div class="time-block"><div class="tb-time">19:00</div><div><div class="tb-main">Drive back to Arugam Bay — ~3.5hrs</div><div class="tb-sub">Arrive A-Bay ~22:30. Long day. Easy night in.</div></div></div>
+          <div class="day-tip"><strong>Guide booking:</strong> Contact Knuckles Adventure Trekking or arrange through your villa host before you leave A-Bay. £15–20 total for the group — not per person.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="phase-block">
+    <div class="phase-header" onclick="togglePhase(this)"><span class="phase-num">06 / 06</span><span class="phase-name">Final Surf &amp;<br><em>Send-off</em></span><span class="phase-days">Days 13–14</span><span class="phase-toggle">+</span></div>
+    <div class="phase-body">
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 13</div><div class="day-title">Best surf day +<br><em>send-off night</em> 🍻</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">09:30</div><div><div class="tb-main">Final instructor session — push to the ceiling 🎥</div><div class="tb-sub">Instructors push everyone to their limit. Record everything. Book a local surf photographer for this session — ~£25 for the group.</div></div></div>
+          <div class="time-block"><div class="tb-time">Midday</div><div><div class="tb-main">Villa afternoon — pool, pack, debrief</div><div class="tb-sub">Last afternoon at the pool. Share photos and footage. Order food in.</div></div></div>
+          <div class="time-block"><div class="tb-time">16:30</div><div><div class="tb-main">One last sunset free surf</div><div class="tb-sub">Optional but highly recommended. Just go out and enjoy it without thinking about technique.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Send-off dinner + final big night out</div><div class="tb-sub">Best restaurant you found across the trip. Then drinks on the beach. This is the night.</div></div></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-left"><div class="day-num">Day 14</div><div class="day-title">Last free surf —<br><em>fly home</em> ✈️</div></div>
+        <div class="day-right">
+          <div class="time-block"><div class="tb-time">07:30</div><div><div class="tb-main">Final free surf — no instructor</div><div class="tb-sub">Just the group and the waves and what you've built. Don't skip it.</div></div></div>
+          <div class="time-block"><div class="tb-time">09:00</div><div><div class="tb-main">Minivan departs for Colombo — 6.5hrs</div><div class="tb-sub">Tip your villa staff and instructors generously. They made the trip.</div></div></div>
+          <div class="time-block"><div class="tb-time">En route</div><div><div class="tb-main">Stop in Colombo — Pettah Market + Ministry of Crab</div><div class="tb-sub">Last-minute shopping at Pettah. Ministry of Crab for the final meal — one of Asia's great seafood restaurants. Book ahead.</div></div></div>
+          <div class="time-block"><div class="tb-time">Evening</div><div><div class="tb-main">Fly home from Bandaranaike International</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ledger">
+  <p class="section-label">The Ledger</p>
+  <h2 class="intro-headline">The <em>numbers.</em></h2>
+  <table class="ledger-table">
+    <thead><tr><th>No.</th><th>Category</th><th>Notes</th><th>Est. per person</th></tr></thead>
+    <tbody>
+      <tr><td>i</td><td>Return flights (LHR)</td><td class="l-muted">Via Dubai or Doha — book 3+ months ahead</td><td>£800–1,200</td></tr>
+      <tr><td>ii</td><td>Villa rental (14 nights)</td><td class="l-muted">Private villa, group of 8–10, pool, split cost</td><td>£350–500</td></tr>
+      <tr><td>iii</td><td>Surf instructors</td><td class="l-muted">2 instructors, 8 sessions × £13pp per 1.5hr session</td><td>~£104pp</td></tr>
+      <tr><td>iv</td><td>Food &amp; drink</td><td class="l-muted">Street food + local restaurants + a few good dinners</td><td>£200–300</td></tr>
+      <tr><td>v</td><td>Yala safari (2 days)</td><td class="l-muted">Jeep hire + jungle lodge + park entry fees</td><td>£100–150</td></tr>
+      <tr><td>vi</td><td>Whale watching</td><td class="l-muted">Mirissa morning boat trip, shared</td><td>£30–50</td></tr>
+      <tr><td>vii</td><td>Sigiriya + Dambulla</td><td class="l-muted">Entry fees + overnight guesthouse + transport</td><td>£60–90</td></tr>
+      <tr><td>viii</td><td>Knuckles guide + trek</td><td class="l-muted">Local guide, group rate, waterfall swim</td><td>£5–10</td></tr>
+      <tr><td>ix</td><td>Local transport</td><td class="l-muted">Motorbike hire, tuk tuks, group van transfers</td><td>£60–100</td></tr>
+      <tr><td>x</td><td>Miscellaneous</td><td class="l-muted">Drinks, scuba, fishing, tips, shopping, extras</td><td>£100–200</td></tr>
+      <tr><td></td><td>Total estimate</td><td class="l-muted">Flights at top end still within £3,500 ceiling</td><td>£1,917–2,618</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════ GAMES ═══════ -->
+<section id="games">
+  <div class="games-intro">
+    <p class="section-label">Pre-Trip Games</p>
+    <h2 class="intro-headline">Three ways to<br><em>waste time wisely.</em></h2>
+    <p class="intro-body">Surf the wave before you get there. Prove you've read the plan. Then test who has the fastest hands in the group.</p>
+  </div>
+
+  <!-- GAME 1: TUK TUK RACER -->
+  <div id="surf-game-wrap">
+    <p class="game-label">Game 01 / 03</p>
+    <h3 class="game-title">Tuk Tuk <em>Racer</em></h3>
+    <p class="game-subtitle">Colombo to Arugam Bay. Don't crash. Don't stop.</p>
+    <div class="game-hud">
+      <div class="hud-item">Distance <span class="hud-val accent" id="tt-score">0 km</span></div>
+      <div class="hud-item">Best <span class="hud-val" id="tt-best">0 km</span></div>
+      <div class="hud-item">Speed <span class="hud-val" id="tt-speed">—</span></div>
+      <div class="hud-item">Lives <span class="hud-val" id="tt-lives">❤️❤️❤️</span></div>
+    </div>
+    <canvas id="tuk-canvas" style="display:block;width:100%;height:240px;background:#c8a96e;border:1px solid var(--border);cursor:pointer;"></canvas>
+    <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;flex-wrap:wrap;">
+      <button class="game-btn" id="tt-start">Start Race</button>
+      <p class="game-instructions">← → arrow keys or tap <strong>left / right</strong> side of canvas to swerve. Dodge everything. Reach Arugam Bay.</p>
+    </div>
+  </div>
+
+  <!-- GAME 2: QUIZ -->
+  <div id="quiz-wrap">
+    <p class="game-label">Game 02 / 03</p>
+    <h3 class="game-title">The <em>Itinerary Quiz</em></h3>
+    <p class="game-subtitle" style="margin-bottom:2rem;">Ten questions. Prove you've read the plan.</p>
+    <div id="quiz-game">
+      <div class="quiz-progress" id="quiz-progress"></div>
+      <div class="quiz-q-num" id="quiz-qnum">Question 1 of 10</div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQuestion()">Next question →</button>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-score" id="qr-score-display"></div>
+      <div class="qr-label">out of 10</div>
+      <div class="qr-verdict" id="qr-verdict"></div>
+      <button class="game-btn" onclick="resetQuiz()">Try again</button>
+    </div>
+  </div>
+
+  <!-- GAME 3: VELO REACTION -->
+  <div id="velo-wrap">
+    <p class="game-label">Game 03 / 03</p>
+    <h3 class="game-title">Velo <em>Reaction Test</em></h3>
+    <p class="game-subtitle">Click the Velo Crispy Peppermint pack the instant it appears. Measured in milliseconds.</p>
+
+    <div class="velo-hud">
+      <div class="hud-item">Last <span class="hud-val accent" id="velo-last">—</span></div>
+      <div class="hud-item">Best <span class="hud-val" id="velo-best">—</span></div>
+      <div class="hud-item">Avg (5) <span class="hud-val" id="velo-avg">—</span></div>
+      <div class="hud-item">Attempts <span class="hud-val" id="velo-attempts">0</span></div>
+    </div>
+
+    <div id="velo-arena">
+      <!-- grid lines for atmosphere -->
+      <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.03) 39px,rgba(255,255,255,0.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.03) 39px,rgba(255,255,255,0.03) 40px);pointer-events:none;"></div>
+
+      <!-- Velo pack SVG -->
+      <div id="velo-pack">
+        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADgAOADASIAAhEBAxEB/8QAHQABAAAHAQEAAAAAAAAAAAAAAAIDBAUGBwgJAf/EAF4QAAAFAgMCBwkGEQcKBwAAAAABAgMEBQYREhMHIQgUIjEyQVEjQlJhYnGBgpEVFiQzU3I0N0NEVFZzdZKVobGys8HR0hglY5OiwtMnRUZVdIOUtOHwFyaEhaPD8f/EABsBAQACAwEBAAAAAAAAAAAAAAADBAIFBgcB/8QAOhEAAQMCAwUFBgUCBwAAAAAAAQACAwQRBSExBhJBUWETcZGh8CIygbHB0RQjQlLhJDMVFkOSotLx/9oADAMBAAIRAxEAPwDssAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAEClobLfuBFGAkajnYClf0gIp4+ZhIFO5MgtfGyY7fz1kkEVfmH0W1NQhfZ0f8AryFS2rU+LBFUgJGoItYuwEU0BCkxECIAACIAACIAACIAACIAACIAACIAACIIHXENlis8BLfe0/P3qfCEhKXHO6O/gd6kEUxTjjpdz5H6QkyH40FnUkuNsN+GteX0eMxSnMdkmbdNyaaenLX8Wntw8M/7PldQ0LtW4R9l2VLdhW5/5xuFGZK5Gt3Bg+stUiw9RssN29RKE9PTS1L9yJtyvhIGq3yUyfKT8DpuVv5aXi0XoR0j9JIGBXjtTsG1zW3dG0aHxhHThU3lKzfMazuJ9KyHEt+bX9pm0d2RFqNallDWhxa6bT0GzHS2lBqVilO9ZElKjPOZ7iMSaHssq8mse5tSktx3OLG6tqAgpshLhLaSbRtEtPdCJ5Liix3IJZ96ZDoYtno4hvVctug+6hMxPuhdH13hR7Ko7mlTrTrNeNH1WYhGX0G6ta/yDHVcMFpstKnbMIbDfe5qmX5iYGkplGsGmwzjOzpEioNlUorzyJqXGeMx2sWFtpS2R6Tzh4EZmf7RlEqZsIjy6j7m02Y407DkIi62urSdJ8ybWRnjiSmsDLEt24lYKzGezZhWHMAtC99+/wC4UZkeeK2KjhhyXPorZxT3P/dDT+doxd6Rwp7AkGj3W2cTYDnfrh6Dqk+Y+5mOd7aqVit2fDptaoEiVVHqqlcmey4pDjETOxiSN+CzNCZBYdrmPUQvqqbsvqMuY43UmoDcZll5aYy5CG38EyjdRHJ8lrNZ4REcvvjcMuSQsyYNh+YdA4DmLn6nXuUfbSDQhdYWttt2VVo22qdfcyiyDL4qqGtCfNnfI0exY2XHnVQ2G5DTcKrQ1lmQ9AWSFKLxJUo0H59T1RwW/sxddNtqgVJupucQOUs16aG3/iiTomTisc7jxIIl5DxSfjIqOnvbQtl7vulSKlUaLGXIW0iRHeJUV9xC1NmZpPFC97asuct5FiQ10mzVJOf6WbPk71fyQVjm++3wXoZBqkWY841HdwkI6cdaDQ6nxmk9+Hj5hXtvjlGwOEvBqRNU3ahRW28nQqtNQvuavDNsu6Nn5bZn80h0LRqwcijx6vTprdxUZ5OZmVGMnHkp9Xc6ReLBe7orUOarsOqaF+7O23Xh46K3FKyUXYbrMEmIhbYUpqUw3JjOtvtr6C0b0qFcy5qEKKkUwAAEQAAEQAAEQAAEQAAEQSJLxNN47jPvU+EJjiiQRrFuQbjj2o56iPBSCL6RkyTkiQ75Slr3JSn9hDGrsuOk0m3ZFwXJNOmW7GRmXqmZLk9hYc+B9SC5S+vsP5dtw0mk0eZcdfmoiW9S+Wta/rlZHgWBdZZsEpLv1ejHgXb3tbre1S5TlSjciUaMtXudT8/JaT4avCcPrPq5iG0wzC31z+TRqfoOqxkeGDqsk298IW4NoLrtFoRyKLaxINriiF5XZKebF4097h9TLk9uYaPSIQHo1HSRUse5ELBUnEuNytlUHac5RLKh0SnUCllUYryXfdA0FmXkeNxBqIsNQ8rr7R58eQvAsMVY4hWrhrdaYhx6tVpk9uCzpRkvOGvSTuLd6EoLHyS7CFnH1POENHDG8va3M5r4XkqNImJECRNSNo1QuKmtitjqFI2KlkTtCqSK8UyQ5GfbkxnXGHELJ1C2V5FJUR4kZGXWRkR4+IZ/au0SpU6ZSnalG90o9KhriQ2kP8XU02aUFgSyIy6CcmOGfA+lmwMtasqFwjuDGakhqBuyNv8ANUXSyR5tKjlI4y8445p6i1qWvIgkJzGeO4i3EXiIZBs2v+6NnFZ47QJx8XWvNJp73KjyfOXUryy3/mFqSkQPMDOekjmjMb23aeCgirHxuuCu3dlm0Ci7Q6a5W7Td4pWWcvurR5C8uZXafswS8XPzL5sC2LTKg1PY1GtRK0LyLaWWVbay50KLqP8A6H0TIeb9v1itWtXo1ft+a5EqMZfIWjoqT1oWXWg+sh2vsn2hQdo9vncdEbbj3DCQlmr0rOXdecyIjPnI+Wbaz68SV3w8ux7AH4e7tYs4z5d/TkV1NHWNnbbitvsuahCYLTTZjUuI3MjrNbSuhvy+cjI+YyPEjI95GQuiTHNK6ogAARAAARAAARAAS3nNNpbngkCKimr1XuL/AFNHKX+wv2+wW2prdkPt0iM4bedGeStG5TTWOG7wTWZGReZZ9QqlutRobkmS5ptoQp15fgpLeZjRfCrv92x9ljkKO44xcl2GtPlRmMpE5gZcxpSaW/nKNQmp4HVErYmalfCd0XWg+FrtbO+roK2aBJb96tHXkZ0uhKeLcbu7vS3kjxYn3w0OAD1KjpWUsIiZoFSc4uNyowEAjFu6wUaWnTbccJtemjDOrwcebEEpHoLwd63s9b4PtK4tNo0eFHgJRW0SVtowfw7sbxK7TxPfzpMsBozgmVDZ5H2+3DJc4nHjurke9lUzkpQ2bx4EnPzOaWBF14Zy6xoYsccWzOMJ/L887csvPJSmLTPVc5qbdaeNtxvI54K9yhGTbvxum5p58mbvc3ZiOm+HjPs6bcdvNU52NIrrKHfdF2GtCnEscjTQ4Zd9jmNJHzb+0hva5qzsmc2EycZVGXaKqapDMdlaPA5CEJLeTuOGHfEoSu2heyGGXsT7Z8M7cs78Fj2AJIvovPmO06482002444voIQjMpXoE9lIym0Pdp2z3Y1puTfdrj5rntQFrTLdjabZM5CRy1tk5rZyT1m2au9Fzfci+++3vfG7HkVFDGSsPPLJ1vX1HdLjBl0zJOgTmOO4jJXKzDfisIcRu6X01yHLrw+HNUXxAgZrEG23G9Nw28M6M6PKT2l2isituOamk05yEZ1+SntMZc8V0N06qnerlQXDcZ+DFPeNepLzFprj4ngfXitvkaecusiE2jouRyg0pu0nKhpoQvj6Ka+aHEydZzBb2UyPDS0SJZ8hJEZdLOJmVnsXy1te+Wl9besuaoywjqsaZFRlFfcqm3a7Jcj8WcLuWsuN8Sp7TTrGjDdkN3UMsN2/cKFsbGJ/aRh1rXF1pZhuuIVJIYFfYF2VawbvhXJRTzuM8iTHWvK3JaPpNq8/UfUZEfUDjYt8xoQVNOyZhZILtOoU1JVGNwIXf9rXDTatEp9z0SRr0KvEnlfIPnySUZdRqPuay6lkntUYzSOscc8D28mo1Zm7Na05np9bQt2AnP0XyQeoguzOgsfnI8JQ6ut+W65DdjSl55kN448lXNmUSSMl+uk0r9bDqHjGLYe7D6p0J01HUH1b4LuIJhMwOCyEBChRLIRDWqZAAARAAARBQVNz4trHpLzH80v+uArxa5B6lRc8hBJ/b+0EVvq2MmbCpvVJe1XvuTeBn7Vm2XmMx598Ky8zvTbPWHWXc8Cmr9zYfZlaMyUr1nNQ8ewyHb+0m5PevZ95XZq4OUqm6Mb7uaM6d/jU60XqjzxibPr+lQ25kOyrlkRXkJdZeapT60OJUWJKIyTgZGXWOn2aiYHuneQLZC/XX11UM50AWKgAulDodar8s4VEpNQqclCDdWzDjLeWlBGRGrKgjPDEy3+MduXho3joqqtYjF7qlp3RSHorVWtuswHJa9KMiVCcaU+rcWDZKLlnvLm7SFVUrEvamxHZ1Ss64YMJlOZ6RJpjzTbae01GjAgbNH+4Z9UIKxtPOJgvlFsy7a3C49RLTrtTh5zRxiHT3nm8xc5ZkEZYivTs32h/aBdX4lkfwCcVETci8eIWBaeSxdtIqW2xkrezq/8A7Qbq/Esj+ATW9nt//aLdX4lkfwCZtRAf1jxCheHcArAlGp8ZyxWMpE2VTJtNmOQqlCkRJiMqVx5LJoeTikjIjSe8txl7RfnrLvGDDckzrTuKPGZQpbzr1LfQ20kuczM0YEXjFntowAS4Z9dVr5A43sFaI7LXyYrG2S+qNiWy2KttIuNFlq5ZCpiUia2kfGyE1KRKqTnKPL4hIkIGZ0TZ9fNWZ4zTrTqj7SugtbBtJV5jXgR+gUdz2bdFAa1K3b9Qp7fyzzB6f4Rbvyimayme7sxI3e5XF/C6yEMzRvFpt3FYKzMm0ipx6tTXdCZDeRIjL8FaFYl+Uh6DWpW41fi0K7IP0HcEBGPkOERuIL0EbyVeYh5+VBodQ8Eivce2M1WkfXFtz+NMo/ozPjBF6Vk8XpHH7Z0QfTsqBq02+B/ldRgs97sPFdKQzFSKNlXxemKwebLoEAABEAABEFoT8c55byvz4C7izQ/7/wDeBFz9wxascLg+SGv9d17S/wB2TrrqPyMtij4Ce0Mqta0iwajJ+G0f4RANa+UqIs96fUWfscQXULHw3XzPZBYLXyzxuqR5mC3/ANo/aOa9mF3TbGvqlXRTuW5AezLa+WaPc42fnSZl7B1+H4aKvCS0a3JHeFXe/dkWx+GJs995O01yrQWtOj3BnlMZOZp7drN+0yX5nMOodC8CvZ6Vp7NyuSpNadVuDCRy+SpqIXxRenE3PWR2DYN7Wnae16yKTxtzjVLW9GqUR9HOpGJGZeu2a0H2Y+IYlwqr0kW3Ysa0rdbxuC6VppdOjs7lJbXghZl2dMkF41+Ia51fLWU8dENb2J6D1c9yzLA1xcsW2cl/4y8IiqbQncHLWtA+IULrbffLE9UvabmPja7BjnDx2hfQezenSPAm1TJ/8LR/rD/3Y3Vb0GgbC9hx8Zcbcj0WGciYtHJ43JPnwx61uGSE4+QXUPPe7K5UrpuOoXHVndSbUZC33l97mPqLsIiwIi7CIbPBKRtZWdt/px5N9eJPVRSu3G24ldy8Bv6QcL75Sf0yGVXJtx2X25X5lErd0cUqENelJa4lIVlVgR4Yk2ZHz9RjF+BB9ISP98ZX6ZDWm17g47Q7t2m3DclNk0JuHPl6rKHpi0uZcpFvImz7O0a/8PSz4lM2qfuNBOfW/cVnvOEYLRdbj/lB7Hft1R+L5X+GKSscIrZXGpE2TTbiOpzGWVrZiohSEKfcItyMVtkRYngWJmNAfyVNqDf1zbX4wc/whrC9rVnWfdMi3KlJp78yJl1uJvKcbSo0keTEyLfgZe0bqk2ewmqk3Ipi462BH/VU5aqeNty2ylSajNrd0uVurO8Ymz5nGJK/CcWvE8PF2F1ERD0E23/SevL7yS/1ah560tHwuP8Adk/nIehO236Ud5feaX+qMT7TMayqpGgZA/VqhoJC5kpPrVcAspE9tIhSkVLaR6AuSkcpkdhx11ttttxxxayQhCOUpSj3ERF2jr/YlsbpVoxI1Xr8ZqoXCvBXL5bcPyUFzZi61+zx6T4LtBbq21mE5Jb1G6dGXO8nUI0oT7DcI/Okbl4VV4zKBa0Kh02S5HkVha0vOo3KSwgizkR9Rmakl5sRxG0dXUVdYzC6c23tT3/QDNbrDIo4YHVkovbT13rILm21WDQZS4TlRdnyG+StEFnVJKuss+5GPmMV9nbTrKvF06dT6kXHVo+hJjeRxwusiI9y/MRmOJkpEZuOtutuNuONuIWlSFoXlUlRcxkZcxkJJNiKTsrMe7e55W8P5Vdu0kxkzaN3kt3cJTYvDhUiTeNnRtBqN3WpU9lHc0t9bzRd7hzmjmw3lzb8W4DlRNraRcVEc+Ln0pLy/nNOEX5nlDo/Yvczl67MoVSqbbbknKuLO3FlccQeUzw8ssDw8oc3bAaT70+FxMtxv4qN7oRUd93EuW3j6pJGngqppqCqoKnN0Yy+B+hAt0W+bFG2Vk8WQcutLXU5726c253RxllLS1+UjkH+UjGQCw2/9Buf7ZL/AOZcF9SOIW2X0AAEQAAEQWaH/f8A7wvIsye5vOfdlfnxBfQuVOG4x/klsB35F42vawn+EckpSO2uGRSnJuwduS3/AJnuHOv7ma3my/WNjilKR6Tswd6gAHAn7qhUGz12DwFtozcmg1DZ7VpORynJXNpy1ry9wM+6ox8gzzeZR9gvGxlt3aztxrO12a257hUQ1U23ELLkqUWOLmHmUavO6XgDjGC/JhPuOw3HGHMi2s6F4KyrQaFJxLqNKlEfiMx6CWzXrS2Z8Gqn3BSHeMUeHSkOx+8VLfc6jLqWt08D7N/YNTjdCKSR0kIu6XIdOfjl5rOJ++LHgtMcOnaBx2rw9nNNkfB4mWbVci+k6ZdybP5qDzmXlp8EcvJSK+tVKbW6xNq1Sd15k+SuRJX4Ti1YmKdtA6zDKBtFTNhGo16nj9lSml33XXeHAj+kPG++Ur9MWu/+E3T7Svaq2u7Z8yW5TZPF1PomoSlzcR44Gndzi7cCZP8AkIjffKX+mKa+uDRbl2XjVLnkXJWYkipPaq2mUNZEqwIt2JY9Q4T+hGJz/jb7tza19b9OivntDEOz1WKv8LeE4w5xaxpCHMh5FrqCVJSrqxIkcw5ilyZNRqMmbNkuPzJLy5Dzq+k44szNR+kzMdYt8Eq12v8AS24vwGP4BF/JWtZr/Syu/gMfwDocPxXAqAuMFxfXIn5rXVNNVzZGy5WprfwuP90T+ch6Aba/pSXj955f6pQ4ZrUelQrvkRqDJkTKVGl6UaQ9hmfSSiLPu3YGZGZeLAd+3lRmrjtqqW/JccjtVGM7FW6jDMlK0mRmWO7HeIdq5miellOmZ629k6dyjwpp3JW+uK89G0ipbSOn08GK2/torP8AVs/uExPBntv7aKz/AFbP7hvf83YZ+8+BWofglY7gPFa+4JtQbg7U+LOcjj9Oejo8pZKQ4RextYz7hf0OTIpFCr7bWdqGt2PJ8jUyGkz8WKMPOohrDabb9O2YX3So9r1qbMqsPLKeW9kysKxI20YJ58SxMy8Ey7R0pYl2UDaZaDhG0w4a2tKo010s2mo+cjLrQe/A/wBo0WLzGCshxmBpLCLHK3MeY06q7RMEkElBIbOGnz8lxXgPjiR0ncnBzhSZjjlAuByDHX9byWNfL4iURkeHnxFxsbYBRaLUGqlXqj7tOMrztxtHSYzdWYsTNftw8kxvX7YYa2Lfa4k8rG/281p2bP1hk3XCw53yWQcGmhyKJsmgJmoW2/PecmmlXepXhk9qSSfpGiNkFRauThlVWrRy1Iy11F1lfhIItNJ+Yyw9o2rwlNq8a06HJtyiSs9wzEG0taN/EWz51n2LMuiXrefUPAepxydqdZq31vAo5tfNU64jD8jShy1NFKaKrxGYW7QEAd5+9gF1bXMbJHTsN937Lra3/oNz/bJf/MuC+JFltsi9wYZ/VHmSdWjynOWf5VGL2OMW1QAAEQAAEQWmWWnUXPLQSv2fuF2Fuq6MWW3epC+X80/+yBFrja9bnvksO97Xbb1JE+AmbG8p5CSykXrsN/hDzoSkeo1UVxaZCqXyL2k99zdwL9YTR+YjHn7wgLO95W1qu0hprThPPcdgeDoO4qIi8RHmR6g7XZCpG9JTnjmPkfoqVa32Q5a9SQyN6663JsOFZTs3Uo0Oeueyz4Li04YY9hYrMi7XFixpbFYzBkuw3JrUWS5GZ5L0hDZqbbV2GrmLn6x27443W3hobjvWtDzwVKlsTUpFZ7mVJuJx52DMbjcn4QtlWnv5uVhgJ8WmTZMxuNGhTXJC0aqGkMLUpTfhkRFiZeMSNe3moHXWdbPNsl9WNbbdv2/Jp7dOQ8t1CHopOqzLPE95jJk8JPar/rKlfi9H7xqaHSpsnU4tCmyNFeReRha8quw8C3HuExmLJ0W3eLOd2XkZVkPuqubBHaeJlzdoqvwqgkeXPjaSddFi6rnbkHFbcTwjtqv2dS/+ASJFX28bR6tR5lMk1KE21LZW08tmESHMqywPBRcx4dY1nFgzZD7jcaHIcdR00IQpSk9R4kXMJ8anzXXnGo0KS44jpoQwalJ85EW4fW4PhrTfsm5dAqz6ypP6ipcfuenp95hkG3U8ILaZ9nU78XoGrW6dN0XHeJSdNnMha9A+Soucj3bjITW4cnifGeLSOLfLaZ6ft5hbqKSkqrdu1rraXVJs88N+zJF1tNO37aR9nU78XoE9G3zaP9nU/wD4JA1emDN4pxniUni2TPraKsuXtx5hNchzY2nxmPJbz9DOg05vNiK/+D4WchE3wCifX1gz3yqus1KbWqtMq1Rc15kx5TryvKP8xdREJ1DqdSpNSbqVJmyIkxHQdZXlV5vGXi5hSphzdVxvi0nVQjOtGmeZKe0y6hEmNI0tTi7vQ1egfR7fN4xsw2Ex9nla1rZWt3LWudJvb+d+a2tSeEBe0JjSlNUqfk+qvRVIc9Omsi/ILTdO3K/qsyuM1Oj0ltXS4izkV+GszMvRgMBTBmu/FwpLnISvkMqVyT5j3dQttQS5Gdcbcacbc8BfJV7BrG4JhbZN5sTb+Plp5K63Ea1zd0vNvXFWmsP6uo446444talrWvlKUo+czPtHSfA9obkLZXcVfMjbkV6emBGX32mjuRK9Djrv4I5ilIkzX24UJrXkyVpaZaR0nHFngki85mRD0AsG249rUK3bSjmTjdEhkt5Xyj6iMs3rGb6/YOf2yqxHStpxq4+Q/my6bAoSLvKzRlLX1MVIkR0iePNV0SAAAiAAAiCU63qsrbXzKE0ARY+403JYkQpreo2tCmnkeEk9x/kGgeFnZEm49nqLkb7vWbVxRL5HKfjHgal+gsrvkkbhDoupNabpSvVX+wxZ6w1xb+ctLUayaUxrJm1GN+/DrNGJnh2GvpKwFmjqn0k7Zmaj0R8V8ewPaWleZqUjelAvWmNW5bTsHaPJtmHSKIuFU7fap631TpJ58zhNmSmHdXMWJudDD2Y/wgdmbuzy8PgLTjlvVLM7TXuklPWpgz7UdXajDn5Q1slI9YMUGKQMlafZ14HoQQQR9QdFzxkdTOLSFven7R6A3s4h2uU2S3I947tP1XpUhUJMwzcI2HIpFkNeU9z2/AzQk+YTbevmgs1HTRWobDbtoUiAspCpkXO/HLujSZMburRkfYlaV83Vv0ShImCI4DTkEbxzz4a3vyWBxOS+gW/HNplsU6deM+DVa7LOfV6e/D4nNXCkPttMGlwzd08VtkrdgsiWssMRYra2nYPXlUZvEokmSt2q0KPom6mDUHO5mto8MCPTcUeJ7jUkjGpU84jSJGYFStaQbm9vAWHnbP4qB+Iy5FbC2O3PTbcO6JNSm1BtyZR1NRuJyVsynXtZtWCHiI8isCM8TGeWdtMpNQqF3TavNOhuz2aYxDQ7UJaHHUx9QlrckxU6huGRlieBY45RoZsVCRLUYNT1LnudcF1sxwsQcv8AaFWZiMkVmjQLdNA2k0m16I4qPIqk+aV0y57ceHVn2m32TQ3kU8txBrfbUaTLBfL8IfaRtOptFsqgx4zUyZUG01PjNPZmLZgNKfecNBPM5TJ0sHMSLHdgNNNic2BwGlPvXOdznrkRb/lwUTsVmbpyt8vstw3LclDm7HqdRYVdbcmxrfZhPRfdCe0o3kY4p0UlxdfnX+xIvt97Q6DW1VmNBmyMPdenOoXJlPvtPsN4GtcdsyysKJXSLDlliNDI5yE9KhiNn4N4OLibEnXiSDy6ejYqJ+MTHKwXRi9pFoOVmbW/dEvdCqKkU6V3BeVMNrjZsOY4c688YvVGN29f1FosNtzUbmOItOl016ItB93Uh9XGWN5YY6Sj3828abSoHFDBmzVK1pbvEg248tB9O5fHY3OSMgt0Jva36JtZoTlEueb72YdIZgSXe7IS7pMPJb1EYYrMjNPV0jGh65U5tRecm1GbImTF4azzyzW4rAiLeo957iIvQI5Tol29QqtdtxwrcojXGJkxeVHgtp75xR9SSLef/wCC5DR09A0yE6NAJNtBc3Jtxvn3BZRyy1jg0jje3f8A+LZ/BLs5usXfIvmpdzpNt4qQtfRXJNB4f1aDz+c2x19RGnWmXJMlvJIkr1Xk+DjgSUehJJL0GfWMZsS06dbdCp1pUlH83UrBcl1fSkyT5eJ+PE9Q/USXJxIs5YRg7iPJ8YxI4jVOl/ToO4LtqWAQRhgU9BYCIAGrVhAAARAAARAAARQLbJwsFi1EXF3eLOeorwk/vF4FPNjNyWdNz1VeCfaCLX99WlSLgtuRa1ba/maf9DOowzU9/HkZDPmLE+R1bzR0TSQ4j2lWPW7AuVyiVtvHpKjS0INLMlrqWj9pc6T9Bn6FqSTupCmtNuZ0KStC+Ulxs9x7usvEMK2hWfSbgttygXQ05Mo3TjVD65prnUZrPqT4Z9W5ebeZ77A8bfhsm67Nh1HLqPrz8FUrKMVDbj3lwIlImJGebWtllybPKkfHmjn0da/g1TZR3NWPMhZfU1+I+fqUYwVPOPU6aoiqWCSJ1wVy00TonbrhmvqRMSkQpE5KRa0VV5sF9QJyRClIjbSMlXcpzYmNiFtInpSMhmqziokianmEtIKUM1ERdTMwkSHRJkPiotigV+8K63RLcprk+Yvp5NzbSfDcVzIT4/wcRDNMyJpc82A4qzT0rpXANCtzTU2o1GPTqdGclzJKyajx2UYuOKPqIh2FsL2Yt7PaPpGtt+7aqylU+Wg8yIjXUhPiI8fnrLHop5E7Yxsopuzxl3i7rdXup5CUTKgtHIhpMiPTbLqLrw6S92bBOGG04MNEJOm2Trji1Zlur3rdV4Rn/wBkRYEWHMPLtodoTXfkQf2+J/d9hyXcYdhzaYbzveUcGK3FYajMHihPXhj5RmZ9Zme8z6zMXJJCFlvTITByi2aAAAiAAAiAAAiAAAiAAAippkdqS3g56iu+SfiFEbjkd3Tk+o73qv3GLsJbjbbrWRwiWgwRY1OozZQ3Y0dqPIpzqDS9TJDZKaUnrJGPQ+YfI3d7vMaAv/g+UmrvOSbEklSah0naLUTPL5217zIvw0dikjpVcSTH+hnNRr5JfS9B/vFLKbg1Jni02MS8nKyvclSVdpHzkfjIXaHEKihfvwOt04HvCimp45hZ4uvPu57SuS05nFrkpMmmOZ8qNZHc3fmOFihfoMW1tseh02lOuw3IzbkefHWjKuJUkaqVJ8HPz+lRLGobl2cbK6jMkRpNFqNszULyLXT1q0c3aRYGjD1CHa0e2kZFqmMg8xn5a+ZWhqcDef7TvFcqJQJ6UDfMzYBSZPdaBtDh6fyMyKSVe0ll+gLU7wdr2w+DVq2n2/D406n/AOsb6LaXDHi4lt3gj5haeXCK1uW58lp9IZhtxPB1v76pUrab/wDWvf4QrovB1k/52v8Ao0Tw0RmDdV6MVo/MJH7SYawX7UeZ+QWLcFrHm24tIuPiCI3NqVSbp1NhSZ81fQjxkG64r1S3jo0tlGyK12Sk1uVXbic7xne02pXmbJH5Vjc1lUeNCoMcrfpFPtmnyUJd0ozCFPKSacSNR9Al+fONHWba07RanYXHrkPv8FtabZ5wN5TbuXN9h8HiuTtOpX9OboFO3fAmVk7Ld8jEsUIx8WdXVlIdF2laMGgUdukW1Tfe9SukvJ9FyVdq1HiZYl1niv5mAyWLChQXtXurklf1V5ZrWrxEZ8xeIsCFaSHHP6Nv+1/0HFYji9XiB/OdlyGnrvuuhp6SKnFmBSYzDMZko8NvTQg+gXj3mZ+Pr7RWNo0yESEEgsEEIhrFOgAAIgAAIgAAIgAAIgAAIgAAIgAAIgkSGWpBZHW0LLxieAIrccF1rfHkuEXgOctPt5xZ5lCcde1HG23M/wD31jKQBAbLC/e1G+qRhD73Kb9jN/kGbACy3lhKbepv2M2K+LSmmvi4Lf4AycAWJJWBXTak2ts6bbbbflrXh+YZNRKbJhUePCkSCPRZS13Hk83nF3AF9JupbTLTXxaCITAAF8QAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEQAAEX/2Q==" style="width:100%;height:100%;object-fit:contain;display:block;" draggable="false"/>
+      </div>
+
+      <div id="velo-overlay">
+        <div class="vo-label" id="vo-label">Click start to begin</div>
+        <div class="vo-big" id="vo-big">Click the<br>Velo pack.</div>
+      </div>
+
+      <div id="velo-result-flash">
+        <div class="vrf-inner" id="vrf-text"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;flex-wrap:wrap;">
+      <button class="game-btn" id="velo-start-btn">Start Round</button>
+      <p class="game-instructions">The pack appears at a random position after a random delay (1–4 seconds). Click or tap it instantly. Average human reaction time is ~200–250ms.</p>
+    </div>
+
+    <div id="velo-leaderboard" style="display:none;">
+      <div class="section-label" style="margin-top:2rem;">This session — leaderboard</div>
+      <table class="velo-scores-table">
+        <thead><tr><th>Rank</th><th>Name</th><th>Best (ms)</th><th>Avg (ms)</th></tr></thead>
+        <tbody id="velo-lb-body"></tbody>
+      </table>
+      <div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <input type="text" id="velo-name-input" placeholder="Your name" style="padding:8px 12px;border:1px solid var(--border);background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:0.06em;width:180px;">
+        <button class="game-btn" onclick="saveVeloScore()">Save score</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- COMMUNITY: SUGGESTIONS + POLL -->
+<section id="community">
+  <p class="section-label">The Group</p>
+  <h2 class="intro-headline">Your trip,<br><em>your say.</em></h2>
+  <div class="comm-grid">
+
+    <!-- SUGGESTIONS BOX -->
+    <div class="comm-panel">
+      <h3 class="comm-panel-title">The <em>Suggestions Box</em></h3>
+      <p class="comm-panel-sub">Something missing? Drop a suggestion. Everyone can see it.</p>
+      <div id="suggestion-form">
+        <textarea class="suggestion-input" id="suggestion-text" placeholder="e.g. Can we do a cooking class? What about a boat trip?"></textarea>
+        <button class="comm-btn" id="suggestion-submit" onclick="submitSuggestion()">Post suggestion</button>
+      </div>
+      <div class="login-required-note" id="suggestion-login-note" style="display:none;">Log in to leave a suggestion.</div>
+      <div class="suggestion-feed" id="suggestion-feed">
+        <div class="feed-empty">No suggestions yet. Be the first.</div>
+      </div>
+    </div>
+
+    <!-- POLL -->
+    <div class="comm-panel">
+      <h3 class="comm-panel-title">The <em>Activity Poll</em></h3>
+      <p class="comm-panel-sub">Activities not currently on the itinerary. Vote for what you want added.</p>
+      <div id="poll-container">
+        <div class="login-required-note" id="poll-login-note">Log in to vote.</div>
+        <div id="poll-items" style="display:none;"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="reach">
+  <p class="reach-label">Logistics &amp; Key Bookings</p>
+  <h2 class="reach-headline">Book these<br><em>before you fly.</em></h2>
+  <div class="reach-grid">
+    <div class="reach-cell"><div class="rc-label">Flights</div><div class="rc-val"><strong>Book 3+ months ahead</strong><br>Emirates via Dubai or Qatar via Doha. ~10–11hrs with one stop.</div></div>
+    <div class="reach-cell"><div class="rc-label">Villa</div><div class="rc-val"><strong>Book immediately</strong><br>Good 8–10 person villas in A-Bay go months in advance for August.</div></div>
+    <div class="reach-cell"><div class="rc-label">Yala Safari</div><div class="rc-val"><strong>Book 2–3 months ahead</strong><br>Leopard Trails or Cinnamon Wild Yala. Non-negotiable advance booking.</div></div>
+    <div class="reach-cell"><div class="rc-label">Surf Instructors</div><div class="rc-val"><strong>Arrange on arrival</strong><br>Arugam Bay Surf School. Negotiate a weekly group rate.</div></div>
+    <div class="reach-cell"><div class="rc-label">Whale Watching</div><div class="rc-val"><strong>Book 2–4 weeks ahead</strong><br>Raja &amp; The Whales, Mirissa. Morning boats only.</div></div>
+    <div class="reach-cell"><div class="rc-label">Knuckles Guide</div><div class="rc-val"><strong>Book 1 week ahead</strong><br>Knuckles Adventure Trekking or via your villa host. £15–20 total.</div></div>
+  </div>
+  <div class="reach-footer">
+    <div class="rf-brand">Mandem Sri Lanka Trip · Aug / Sep 2026 · Private · Internal Document</div>
+    <div class="rf-sign">Fourteen days well spent.</div>
+  </div>
+</section>
+
+<script>
+/* ── PHASE TOGGLE ── */
+function togglePhase(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.phase-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  toggle.classList.toggle('open', !isOpen);
+}
+
+/* ── TUK TUK RACER ── */
+(function() {
+  const canvas = document.getElementById('tuk-canvas');
+  const ctx = canvas.getContext('2d');
+  const btnStart = document.getElementById('tt-start');
+  const elScore = document.getElementById('tt-score');
+  const elBest = document.getElementById('tt-best');
+  const elSpeed = document.getElementById('tt-speed');
+  const elLives = document.getElementById('tt-lives');
+
+  const GOAL = 235; // km Colombo to A-Bay
+  let W, H, running = false, raf;
+  let dist, speed, lives, best = 0;
+  let tuk, obstacles, particles, frameCount;
+  let keys = { left: false, right: false };
+  let flashTimer = 0, flashMsg = '';
+  let invincible = 0; // frames of invincibility after hit
+
+  // Road layout
+  const LANES = 3;
+  function laneX(lane) { return W * 0.3 + lane * (W * 0.135); }
+  const ROAD_L = () => W * 0.22;
+  const ROAD_R = () => W * 0.78;
+
+  // Obstacle types
+  const OBS_TYPES = [
+    { label: '🐄', w: 34, h: 28, color: '#8B5E3C', name: 'cow' },
+    { label: '🚗', w: 28, h: 44, color: '#3a7bd5', name: 'car' },
+    { label: '🛵', w: 20, h: 30, color: '#e74c3c', name: 'moped' },
+    { label: '🕳️', w: 30, h: 16, color: '#5a3e1b', name: 'pothole' },
+    { label: '🧑', w: 16, h: 28, color: '#f39c12', name: 'tourist' },
+    { label: '🐘', w: 44, h: 44, color: '#7f8c8d', name: 'elephant' },
+  ];
+
+  // Scenery items
+  let scenery = [];
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = 240;
+    canvas.width = W;
+    canvas.height = H;
+  }
+
+  function initGame() {
+    dist = 0; speed = 2.2; lives = 3; frameCount = 0;
+    invincible = 0; flashTimer = 0;
+    particles = [];
+    tuk = { lane: 1, x: laneX(1), y: H * 0.72, w: 26, h: 40, moving: false };
+    obstacles = [];
+    scenery = Array.from({ length: 6 }, (_, i) => ({
+      x: Math.random() < 0.5 ? ROAD_L() - 30 - Math.random() * 60 : ROAD_R() + 10 + Math.random() * 60,
+      y: i * (H / 5),
+      type: Math.random() < 0.5 ? 'palm' : 'bush',
+      size: 18 + Math.random() * 14
+    }));
+    updateHUD();
+  }
+
+  function updateHUD() {
+    elScore.textContent = Math.floor(dist) + ' km';
+    elBest.textContent = best + ' km';
+    const kmh = Math.round(30 + speed * 18);
+    elSpeed.textContent = kmh + ' km/h';
+    const hearts = '❤️'.repeat(lives) + '🖤'.repeat(Math.max(0, 3 - lives));
+    elLives.textContent = hearts;
+  }
+
+  function spawnObstacle() {
+    const lane = Math.floor(Math.random() * LANES);
+    const type = OBS_TYPES[Math.floor(Math.random() * OBS_TYPES.length)];
+    // avoid elephant on low dist
+    if (type.name === 'elephant' && dist < 30) return;
+    obstacles.push({
+      lane, x: laneX(lane), y: -50,
+      ...type,
+      speed: speed * (0.85 + Math.random() * 0.4)
+    });
+  }
+
+  function drawRoad() {
+    // sky
+    const skyGrad = ctx.createLinearGradient(0, 0, 0, H * 0.45);
+    skyGrad.addColorStop(0, '#87CEEB');
+    skyGrad.addColorStop(1, '#c8e8f8');
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0, 0, W, H * 0.45);
+
+    // ground
+    ctx.fillStyle = '#c8a96e';
+    ctx.fillRect(0, H * 0.45, W, H * 0.55);
+
+    // road surface with perspective
+    ctx.beginPath();
+    ctx.moveTo(ROAD_L() - 10, H);
+    ctx.lineTo(ROAD_R() + 10, H);
+    ctx.lineTo(W * 0.56, H * 0.42);
+    ctx.lineTo(W * 0.44, H * 0.42);
+    ctx.closePath();
+    ctx.fillStyle = '#555';
+    ctx.fill();
+
+    // road markings - dashed centre line
+    const dashSpacing = 60;
+    const offset = (frameCount * speed * 0.8) % dashSpacing;
+    for (let y = H * 0.42; y < H + dashSpacing; y += dashSpacing) {
+      const prog = (y - H * 0.42) / (H - H * 0.42);
+      const roadW = (ROAD_R() - ROAD_L()) * prog;
+      const cx = W * 0.5;
+      const lineY = y - offset;
+      if (lineY > H * 0.42 && lineY < H) {
+        ctx.fillStyle = 'rgba(255,255,200,0.6)';
+        ctx.fillRect(cx - roadW * 0.02, lineY, roadW * 0.04, 18 * prog);
+      }
+    }
+
+    // road edges
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([12, 8]);
+    // left edge
+    ctx.beginPath();
+    ctx.moveTo(ROAD_L(), H);
+    ctx.lineTo(W * 0.44, H * 0.42);
+    ctx.stroke();
+    // right edge
+    ctx.beginPath();
+    ctx.moveTo(ROAD_R(), H);
+    ctx.lineTo(W * 0.56, H * 0.42);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // distance sign
+    if (dist < GOAL) {
+      ctx.fillStyle = '#2ecc71';
+      ctx.fillRect(W * 0.72, H * 0.1, 90, 28);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 11px "DM Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('A-BAY: ' + Math.max(0, Math.floor(GOAL - dist)) + 'km', W * 0.72 + 45, H * 0.1 + 18);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  function drawScenery() {
+    scenery.forEach(s => {
+      if (s.type === 'palm') {
+        // trunk
+        ctx.fillStyle = '#8B6914';
+        ctx.fillRect(s.x - 4, s.y - s.size * 1.2, 8, s.size * 1.2);
+        // leaves
+        ctx.fillStyle = '#2d8a4e';
+        for (let i = 0; i < 5; i++) {
+          const angle = (i / 5) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.ellipse(
+            s.x + Math.cos(angle) * s.size * 0.7,
+            s.y - s.size * 1.2 + Math.sin(angle) * s.size * 0.4,
+            s.size * 0.55, s.size * 0.22, angle, 0, Math.PI * 2
+          );
+          ctx.fill();
+        }
+      } else {
+        ctx.fillStyle = '#4a7c3f';
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size * 0.6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#3a6230';
+        ctx.beginPath();
+        ctx.arc(s.x + 6, s.y - 4, s.size * 0.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+  }
+
+  function drawTuk() {
+    const tx = tuk.x, ty = tuk.y;
+    // flash when invincible
+    if (invincible > 0 && Math.floor(invincible / 4) % 2 === 0) return;
+
+    // shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.18)';
+    ctx.beginPath();
+    ctx.ellipse(tx, ty + tuk.h / 2 + 4, tuk.w * 0.7, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // body - yellow tuk tuk
+    ctx.fillStyle = '#f0c030';
+    ctx.beginPath();
+    ctx.roundRect(tx - tuk.w / 2, ty - tuk.h / 2, tuk.w, tuk.h * 0.65, 4);
+    ctx.fill();
+
+    // roof
+    ctx.fillStyle = '#e0a800';
+    ctx.beginPath();
+    ctx.roundRect(tx - tuk.w / 2 + 2, ty - tuk.h / 2 - 10, tuk.w - 4, 14, 3);
+    ctx.fill();
+
+    // windscreen
+    ctx.fillStyle = 'rgba(180,230,255,0.7)';
+    ctx.fillRect(tx - tuk.w / 2 + 4, ty - tuk.h / 2 + 2, tuk.w - 8, tuk.h * 0.28);
+
+    // wheels
+    ctx.fillStyle = '#222';
+    [[-tuk.w * 0.38, tuk.h * 0.22], [tuk.w * 0.38, tuk.h * 0.22],
+     [-tuk.w * 0.38, -tuk.h * 0.05], [tuk.w * 0.38, -tuk.h * 0.05]].forEach(([wx, wy]) => {
+      ctx.beginPath();
+      ctx.arc(tx + wx, ty + wy, 5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // headlight
+    ctx.fillStyle = '#ffe066';
+    ctx.fillRect(tx - 6, ty - tuk.h / 2 - 2, 5, 4);
+    ctx.fillRect(tx + 1, ty - tuk.h / 2 - 2, 5, 4);
+  }
+
+  function drawObstacles() {
+    obstacles.forEach(o => {
+      ctx.font = Math.round(o.h * 0.85) + 'px serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(o.label, o.x, o.y + o.h * 0.5);
+    });
+    ctx.textAlign = 'left';
+  }
+
+  function drawParticles() {
+    particles.forEach(p => {
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color || '#f0c030';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function drawFlash() {
+    if (flashTimer > 0) {
+      ctx.globalAlpha = flashTimer / 30;
+      ctx.fillStyle = '#ff4444';
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1;
+      // message
+      if (flashTimer > 15) {
+        ctx.font = 'bold 18px "DM Mono", monospace';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.fillText(flashMsg, W / 2, H / 2);
+        ctx.textAlign = 'left';
+      }
+    }
+  }
+
+  function drawHUD() {
+    // progress bar
+    const progress = Math.min(1, dist / GOAL);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.fillRect(W * 0.05, H - 14, W * 0.9, 7);
+    ctx.fillStyle = '#2ecc71';
+    ctx.fillRect(W * 0.05, H - 14, W * 0.9 * progress, 7);
+    // labels
+    ctx.font = '9px "DM Mono", monospace';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.textAlign = 'left';
+    ctx.fillText('COLOMBO', W * 0.05, H - 17);
+    ctx.textAlign = 'right';
+    ctx.fillText('ARUGAM BAY', W * 0.95, H - 17);
+    ctx.textAlign = 'left';
+  }
+
+  const OBS_MSGS = {
+    cow: '🐄 MOO!', car: '🚗 BEEP!', moped: '🛵 WATCH IT!',
+    pothole: '🕳️ POTHOLE!', tourist: '📸 TOURIST!', elephant: '🐘 ELEPHANT!!'
+  };
+
+  function checkCollisions() {
+    if (invincible > 0) { invincible--; return; }
+    obstacles.forEach((o, i) => {
+      const dx = Math.abs(tuk.x - o.x);
+      const dy = Math.abs(tuk.y - o.y);
+      if (dx < (tuk.w / 2 + o.w / 2) * 0.72 && dy < (tuk.h / 2 + o.h / 2) * 0.72) {
+        // hit
+        lives--;
+        obstacles.splice(i, 1);
+        flashTimer = 30;
+        flashMsg = OBS_MSGS[o.name] || 'CRASH!';
+        invincible = 90;
+        // explosion particles
+        for (let j = 0; j < 16; j++) {
+          particles.push({
+            x: tuk.x, y: tuk.y,
+            vx: (Math.random() - 0.5) * 6,
+            vy: (Math.random() - 0.5) * 6,
+            r: Math.random() * 5 + 2,
+            life: 1, color: ['#f0c030','#e74c3c','#fff'][Math.floor(Math.random()*3)]
+          });
+        }
+        updateHUD();
+        if (lives <= 0) {
+          setTimeout(() => stopGame(), 400);
+        }
+      }
+    });
+  }
+
+  function update() {
+    frameCount++;
+    dist += speed * 0.018;
+    speed = Math.min(7, 2.2 + dist * 0.025);
+
+    // move tuk toward target lane
+    const targetX = laneX(tuk.lane);
+    tuk.x += (targetX - tuk.x) * 0.18;
+
+    // spawn obstacles
+    const spawnRate = Math.max(28, 75 - dist * 0.4);
+    if (frameCount % Math.round(spawnRate) === 0) spawnObstacle();
+
+    // move obstacles
+    obstacles.forEach(o => { o.y += o.speed * 1.6; });
+    obstacles = obstacles.filter(o => o.y < H + 80);
+
+    // move scenery
+    scenery.forEach(s => {
+      s.y += speed * 0.9;
+      if (s.y > H + 40) {
+        s.y = -40;
+        s.x = Math.random() < 0.5
+          ? ROAD_L() - 30 - Math.random() * 60
+          : ROAD_R() + 10 + Math.random() * 60;
+        s.type = Math.random() < 0.5 ? 'palm' : 'bush';
+      }
+    });
+
+    // particles
+    particles = particles.filter(p => p.life > 0.02);
+    particles.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.15; p.life -= 0.04; });
+
+    if (flashTimer > 0) flashTimer--;
+
+    checkCollisions();
+    updateHUD();
+
+    // win condition
+    if (dist >= GOAL) {
+      stopGame(true);
+    }
+  }
+
+  function stopGame(won) {
+    running = false;
+    cancelAnimationFrame(raf);
+    const km = Math.floor(dist);
+    if (km > best) best = km;
+    elBest.textContent = best + ' km';
+    // draw final screen
+    ctx.clearRect(0, 0, W, H);
+    drawRoad();
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.textAlign = 'center';
+    if (won) {
+      ctx.font = 'italic 2rem "Playfair Display", serif';
+      ctx.fillStyle = '#2ecc71';
+      ctx.fillText('ARUGAM BAY!', W / 2, H / 2 - 16);
+      ctx.font = '13px "DM Mono", monospace';
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillText('You made it. ' + Math.floor(dist) + 'km survived.', W / 2, H / 2 + 14);
+    } else {
+      ctx.font = 'italic 2rem "Playfair Display", serif';
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillText('GAME OVER', W / 2, H / 2 - 16);
+      ctx.font = '13px "DM Mono", monospace';
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillText(Math.floor(dist) + ' km from Colombo. ' + (GOAL - Math.floor(dist)) + ' km short.', W / 2, H / 2 + 14);
+    }
+    ctx.textAlign = 'left';
+    btnStart.textContent = won ? 'Race Again' : 'Try Again';
+    btnStart.style.display = 'inline-block';
+  }
+
+  function loop() {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    drawRoad();
+    drawScenery();
+    drawObstacles();
+    drawTuk();
+    drawParticles();
+    drawFlash();
+    drawHUD();
+    update();
+    raf = requestAnimationFrame(loop);
+  }
+
+  function startGame() {
+    resize();
+    running = true;
+    btnStart.style.display = 'none';
+    initGame();
+    loop();
+  }
+
+  function moveLane(dir) {
+    if (!running) return;
+    tuk.lane = Math.max(0, Math.min(LANES - 1, tuk.lane + dir));
+  }
+
+  btnStart.addEventListener('click', startGame);
+  canvas.addEventListener('click', e => {
+    if (!running) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    moveLane(x < canvas.offsetWidth / 2 ? -1 : 1);
+  });
+  canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    if (!running) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    moveLane(x < canvas.offsetWidth / 2 ? -1 : 1);
+  }, { passive: false });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft' && running) { e.preventDefault(); moveLane(-1); }
+    if (e.key === 'ArrowRight' && running) { e.preventDefault(); moveLane(1); }
+  });
+  window.addEventListener('resize', () => { if (running) resize(); });
+
+  // idle screen
+  resize();
+  ctx.fillStyle = '#555';
+  ctx.fillRect(0, 0, W, H);
+  const skyG = ctx.createLinearGradient(0,0,0,H*0.5);
+  skyG.addColorStop(0,'#87CEEB'); skyG.addColorStop(1,'#c8e8f8');
+  ctx.fillStyle = skyG; ctx.fillRect(0,0,W,H*0.5);
+  ctx.fillStyle = '#c8a96e'; ctx.fillRect(0,H*0.5,W,H*0.5);
+  ctx.fillStyle = '#555';
+  ctx.beginPath();
+  ctx.moveTo(W*0.22, H); ctx.lineTo(W*0.78, H);
+  ctx.lineTo(W*0.56, H*0.42); ctx.lineTo(W*0.44, H*0.42);
+  ctx.closePath(); ctx.fill();
+  ctx.font = 'italic 1.3rem "Playfair Display", serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.textAlign = 'center';
+  ctx.fillText('Colombo → Arugam Bay · 235km', W/2, H/2 + 8);
+  ctx.textAlign = 'left';
+})();
+
+/* ── QUIZ ── */
+const questions = [
+  {q:"What time does Yala National Park open for the dawn game drive?",opts:["5:00am","6:00am","7:00am","5:30am"],a:1,fact:"The park opens at 6am — your alarm is set for 5:30 to be at the gate first."},
+  {q:"Which restaurant in Arugam Bay serves the best crab curry?",opts:["Stardust Beach Hotel","Sooriya Restaurant","Hideaway Restaurant","Gecko Cafe"],a:2,fact:"Hideaway Restaurant. Order the coconut rice. Sit outside."},
+  {q:"How many steps does it take to summit Sigiriya Rock Fortress?",opts:["800","1,200","950","1,500"],a:1,fact:"1,200 steps to the top of a 200m volcanic rock. Allow 2.5hrs."},
+  {q:"What is the recommended whale watching operator in Mirissa?",opts:["Mirissa Whale Watch Co.","Blue Horizon Boats","Raja & The Whales","South Coast Charters"],a:2,fact:"Raja & The Whales — the most ethical operator with the best sighting record."},
+  {q:"What jungle trail is recommended in the Knuckles Mountain Range?",opts:["Corbett's Gap to Dothalugala","Mini World's End to Corbett's Gap loop","Knuckles Peak summit trail","Meemure village circuit"],a:1,fact:"Mini World's End to Corbett's Gap loop — 3–4hrs, cliff edge views, cloud forest, river crossings."},
+  {q:"On which day does the group do their first scuba dive?",opts:["Day 4","Day 7","Day 9","Day 11"],a:2,fact:"Day 9 — intro dive off Arugam Bay, followed by the first proper night out."},
+  {q:"What is the approximate drive time from Arugam Bay to Colombo airport?",opts:["3 hours","4.5 hours","6.5 hours","8 hours"],a:2,fact:"6.5 hours — leave no later than 9am on Day 14 for an evening flight."},
+  {q:"What is the recommended local guide budget for the Knuckles trek?",opts:["£50–80 per person","£15–20 total for the group","£40–50 total for the group","£10 per person"],a:1,fact:"£15–20 total for the whole group. The trails are unmarked so the guide is non-negotiable."},
+  {q:"Which national park do the group visit on Day 4?",opts:["Sinharaja Rainforest","Udawalawe National Park","Kumana National Park","Bundala National Park"],a:2,fact:"Kumana National Park — 30 minutes from Arugam Bay. Elephants, crocodiles, exotic birds."},
+  {q:"What is the average daily on-the-ground spend per person?",opts:["£40–60/day","£80–120/day","£150–180/day","£200+/day"],a:1,fact:"~£80–120 per day on the ground — comfortably inside the £3k budget including flights."}
+];
+let qIndex=0, qScore=0, answered=false;
+function buildProgress() {
+  const el=document.getElementById('quiz-progress'); el.innerHTML='';
+  questions.forEach((_,i) => { const d=document.createElement('div'); d.className='qp-dot'+(i<qIndex?' done':i===qIndex?' current':''); el.appendChild(d); });
+}
+function loadQuestion() {
+  const q=questions[qIndex];
+  document.getElementById('quiz-qnum').textContent='Question '+(qIndex+1)+' of '+questions.length;
+  document.getElementById('quiz-question').innerHTML=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-feedback').className='quiz-feedback';
+  document.getElementById('quiz-next').style.display='none';
+  answered=false;
+  const opts=document.getElementById('quiz-options'); opts.innerHTML='';
+  q.opts.forEach((opt,i) => { const btn=document.createElement('button'); btn.className='quiz-opt'; btn.textContent=opt; btn.onclick=()=>answer(i,btn); opts.appendChild(btn); });
+  buildProgress();
+}
+function answer(i,btn) {
+  if (answered) return; answered=true;
+  const q=questions[qIndex];
+  document.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('quiz-feedback');
+  if (i===q.a) { btn.classList.add('correct'); qScore++; fb.textContent='✓ Correct. '+q.fact; fb.className='quiz-feedback good'; }
+  else { btn.classList.add('wrong'); document.querySelectorAll('.quiz-opt')[q.a].classList.add('correct'); fb.textContent='✗ '+q.fact; fb.className='quiz-feedback bad'; }
+  document.getElementById('quiz-next').style.display='inline-block';
+}
+function nextQuestion() { qIndex++; if (qIndex>=questions.length) showResult(); else loadQuestion(); }
+function showResult() {
+  document.getElementById('quiz-game').style.display='none';
+  const res=document.getElementById('quiz-result'); res.style.display='block';
+  document.getElementById('qr-score-display').innerHTML='<em>'+qScore+'</em>';
+  const verdicts=[[0,3,"You have not read the itinerary. Read the itinerary."],[4,5,"A passable effort. Read it again on the plane."],[6,7,"Not bad. You've skimmed it at least."],[8,9,"Solid. You're going to be the one everyone asks."],[10,10,"Perfect score. You've genuinely read every word. Impressive."]];
+  const v=verdicts.find(([lo,hi])=>qScore>=lo&&qScore<=hi);
+  document.getElementById('qr-verdict').textContent=v?v[2]:'';
+}
+function resetQuiz() { qIndex=0; qScore=0; answered=false; document.getElementById('quiz-result').style.display='none'; document.getElementById('quiz-game').style.display='block'; loadQuestion(); }
+loadQuestion();
+
+/* ── VELO REACTION GAME ── */
+(function() {
+  const arena = document.getElementById('velo-arena');
+  const pack = document.getElementById('velo-pack');
+  const startBtn = document.getElementById('velo-start-btn');
+  const elLast = document.getElementById('velo-last');
+  const elBest = document.getElementById('velo-best');
+  const elAvg = document.getElementById('velo-avg');
+  const elAttempts = document.getElementById('velo-attempts');
+  const overlay = document.getElementById('velo-overlay');
+  const voLabel = document.getElementById('vo-label');
+  const voBig = document.getElementById('vo-big');
+  const flash = document.getElementById('velo-result-flash');
+  const flashText = document.getElementById('vrf-text');
+
+  let state = 'idle'; // idle | waiting | ready | done
+  let appearTime = 0;
+  let waitTimeout, disappearTimeout;
+  let scores = [];
+  let best = Infinity;
+  let attempts = 0;
+  let tooEarly = false;
+
+  function getArenaSize() {
+    return { w: arena.offsetWidth, h: arena.offsetHeight };
+  }
+
+  function showPack() {
+    const { w, h } = getArenaSize();
+    const margin = 40;
+    const px = margin + Math.random() * (w - margin * 2 - 52);
+    const py = margin + Math.random() * (h - margin * 2 - 72);
+    pack.style.left = px + 'px';
+    pack.style.top = py + 'px';
+    pack.style.display = 'block';
+    pack.style.opacity = '1';
+    pack.style.transform = 'scale(1)';
+    overlay.style.display = 'none';
+    appearTime = performance.now();
+    state = 'ready';
+    // auto-disappear after 2.5s = miss
+    disappearTimeout = setTimeout(() => {
+      if (state === 'ready') missed();
+    }, 2500);
+  }
+
+  function missed() {
+    state = 'done';
+    pack.style.display = 'none';
+    showFlash('TOO SLOW', false);
+    resetRound(1800);
+  }
+
+  function showFlash(msg, good) {
+    flashText.textContent = msg;
+    flashText.className = 'vrf-inner ' + (good ? 'hit' : 'miss');
+    flash.style.opacity = '1';
+    setTimeout(() => { flash.style.opacity = '0'; }, 900);
+  }
+
+  function handleClick(e) {
+    if (state === 'waiting') {
+      // clicked too early
+      clearTimeout(waitTimeout);
+      tooEarly = true;
+      state = 'done';
+      voLabel.textContent = 'Too early!';
+      voBig.textContent = 'Wait for\nthe pack.';
+      overlay.style.display = 'flex';
+      showFlash('TOO EARLY', false);
+      resetRound(1800);
+      return;
+    }
+    if (state !== 'ready') return;
+    // check hit on pack
+    const packEl = e.target.closest ? e.target.closest('#velo-pack') : null;
+    if (!packEl && e.currentTarget === arena) {
+      // clicked arena but not the pack
+      showFlash('MISS', false);
+      return;
+    }
+  }
+
+  function handlePackClick(e) {
+    e.stopPropagation();
+    if (state !== 'ready') return;
+    clearTimeout(disappearTimeout);
+    const rt = Math.round(performance.now() - appearTime);
+    state = 'done';
+    pack.style.display = 'none';
+    attempts++;
+    scores.push(rt);
+    if (scores.length > 10) scores.shift();
+    if (rt < best) best = rt;
+    elLast.textContent = rt + 'ms';
+    elBest.textContent = best + 'ms';
+    const recent = scores.slice(-5);
+    elAvg.textContent = Math.round(recent.reduce((a,b)=>a+b,0)/recent.length) + 'ms';
+    elAttempts.textContent = attempts;
+
+    let rating = '';
+    if (rt < 150) rating = ' — ELITE';
+    else if (rt < 200) rating = ' — FAST';
+    else if (rt < 250) rating = ' — GOOD';
+    else if (rt < 350) rating = ' — AVERAGE';
+    else rating = ' — SLOW';
+
+    showFlash(rt + 'ms' + rating, true);
+    overlay.style.display = 'flex';
+    voLabel.textContent = rt + 'ms' + rating;
+    voBig.textContent = 'Again?';
+    document.getElementById('velo-leaderboard').style.display = 'block';
+    resetRound(400);
+  }
+
+  function resetRound(delay) {
+    setTimeout(() => {
+      startBtn.textContent = 'Next Round';
+      startBtn.style.display = 'inline-block';
+      state = 'idle';
+    }, delay);
+  }
+
+  function startRound() {
+    if (state !== 'idle') return;
+    state = 'waiting';
+    startBtn.style.display = 'none';
+    pack.style.display = 'none';
+    overlay.style.display = 'flex';
+    voLabel.textContent = 'Get ready...';
+    voBig.textContent = 'Watch for\nthe pack.';
+    const delay = 1000 + Math.random() * 3000;
+    waitTimeout = setTimeout(showPack, delay);
+  }
+
+  startBtn.addEventListener('click', startRound);
+  arena.addEventListener('click', handleClick);
+  pack.addEventListener('click', handlePackClick);
+  pack.addEventListener('touchstart', e => { e.preventDefault(); handlePackClick(e); }, { passive: false });
+
+  // leaderboard
+  window.veloSessionScores = [];
+  window.saveVeloScore = function() {
+    const name = document.getElementById('velo-name-input').value.trim() || 'Anonymous';
+    if (best === Infinity) return;
+    const avg = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+    window.veloSessionScores.push({ name, best, avg });
+    window.veloSessionScores.sort((a,b) => a.best - b.best);
+    const tbody = document.getElementById('velo-lb-body');
+    tbody.innerHTML = '';
+    window.veloSessionScores.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      if (i === 0) tr.className = 'velo-rank-1';
+      tr.innerHTML = '<td>'+(i+1)+'</td><td>'+s.name+'</td><td>'+s.best+'ms</td><td>'+s.avg+'ms</td>';
+      tbody.appendChild(tr);
+    });
+    document.getElementById('velo-name-input').value = '';
+  };
+})();
+
+/* ── LANDING + WAVE SWEEP (single seamless sequence) ── */
+(function() {
+  const lc = document.getElementById('landing-canvas');
+  const lctx = lc.getContext('2d');
+  let lW, lH, lt = 0, landingRAF;
+
+  function resizeLanding() {
+    lW = lc.width = window.innerWidth;
+    lH = lc.height = window.innerHeight;
+  }
+
+  function drawLandingBg() {
+    lctx.clearRect(0, 0, lW, lH);
+    const grad = lctx.createLinearGradient(0, 0, 0, lH);
+    grad.addColorStop(0, '#04080f');
+    grad.addColorStop(1, '#0d2240');
+    lctx.fillStyle = grad;
+    lctx.fillRect(0, 0, lW, lH);
+    for (let w = 0; w < 5; w++) {
+      const yBase = lH * (0.55 + w * 0.08);
+      const amp = 18 - w * 2;
+      const freq = 0.008 - w * 0.001;
+      const spd = 0.4 + w * 0.15;
+      const alpha = 0.06 - w * 0.01;
+      lctx.beginPath();
+      lctx.moveTo(0, lH);
+      for (let x = 0; x <= lW; x += 4) {
+        const y = yBase + Math.sin(x * freq + lt * spd) * amp + Math.sin(x * freq * 1.7 + lt * spd * 0.8) * (amp * 0.4);
+        lctx.lineTo(x, y);
+      }
+      lctx.lineTo(lW, lH); lctx.lineTo(0, lH); lctx.closePath();
+      lctx.fillStyle = `rgba(30,100,180,${alpha + w * 0.015})`;
+      lctx.fill();
+    }
+    if (!window._stars) {
+      window._stars = Array.from({length: 80}, () => ({
+        x: Math.random() * lW, y: Math.random() * lH * 0.5,
+        r: Math.random() * 1.2 + 0.3, twinkle: Math.random() * Math.PI * 2
+      }));
+    }
+    window._stars.forEach(s => {
+      s.twinkle += 0.02;
+      lctx.beginPath();
+      lctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      lctx.fillStyle = `rgba(255,255,255,${0.3 + Math.sin(s.twinkle) * 0.25})`;
+      lctx.fill();
+    });
+    lt += 0.016;
+  }
+
+  function landingLoop() { drawLandingBg(); landingRAF = requestAnimationFrame(landingLoop); }
+  resizeLanding();
+  window.addEventListener('resize', resizeLanding);
+  landingLoop();
+  document.body.style.overflow = 'hidden';
+
+  // ── THE ONE WAVE — sweeps left→right, reveals login behind it ──
+  window.triggerWave = function() {
+    document.getElementById('landing-content').classList.add('hide');
+
+    // Prepare login screen — visible but BEHIND everything, opacity 1
+    const loginScreen = document.getElementById('login-screen');
+    loginScreen.classList.remove('hidden');
+    loginScreen.style.opacity = '1';
+    loginScreen.style.zIndex = '7000'; // below wave canvas
+
+    // Use the sweep canvas (already in DOM, z-index 9998)
+    const sweep = document.getElementById('wave-sweep');
+    const sc = document.getElementById('sweep-canvas');
+    const sctx = sc.getContext('2d');
+    sweep.style.opacity = '1';
+    sweep.style.zIndex = '9998';
+
+    // Landing stays on top of login but below sweep, will fade out
+    const landing = document.getElementById('landing');
+    landing.style.zIndex = '9000';
+
+    let sW = sc.width = window.innerWidth;
+    let sH = sc.height = window.innerHeight;
+
+    // Phase 1: wave sweeps across (1800ms), revealing login beneath it
+    // Phase 2: wave continues off-screen, landing fades out (300ms)
+    // Result: seamless, login already visible when wave clears
+
+    const duration = 2000;
+    let start = null;
+
+    const foamParticles = Array.from({length: 100}, () => ({
+      y: Math.random() * 10000, // assigned on activation
+      r: Math.random() * 4 + 1.5,
+      vx: Math.random() * 2.5 + 0.8,
+      vy: (Math.random() - 0.5) * 1.5,
+      life: 1, decay: Math.random() * 0.012 + 0.006,
+      active: false, x: 0
+    }));
+
+    function frame(ts) {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      const progress = elapsed / duration;
+      // ease out — starts fast, slows at end
+      const eased = 1 - Math.pow(1 - Math.min(progress, 1), 2.2);
+
+      sW = sc.width = window.innerWidth;
+      sH = sc.height = window.innerHeight;
+      sctx.clearRect(0, 0, sW, sH);
+
+      const waveX = eased * (sW + 280) - 120;
+
+      // ── Left of wave: fade landing canvas out as wave passes ──
+      // Draw dark ocean fill that covers landing page (left side)
+      // but we actually want to REVEAL login, so left of wave = transparent (login shows through)
+      // Right of wave = landing page still visible → draw landing color fill
+      if (waveX < sW + 50) {
+        // Cover right portion with dark (landing bg) — fades as wave passes
+        const coverAlpha = Math.max(0, 1 - Math.max(0, (waveX - sW * 0.6) / (sW * 0.5)));
+        if (waveX < sW) {
+          sctx.fillStyle = `rgba(4,8,15,${coverAlpha})`;
+          sctx.fillRect(waveX + 40, 0, sW - waveX, sH);
+        }
+      }
+
+      // ── Wave body ──
+      sctx.beginPath();
+      sctx.moveTo(waveX - 90, 0);
+      for (let y = 0; y <= sH; y += 4) {
+        const w =
+          Math.sin(y * 0.024 + elapsed * 0.0035) * 26 +
+          Math.sin(y * 0.053 + elapsed * 0.0055) * 11 +
+          Math.cos(y * 0.013 + elapsed * 0.0025) * 15;
+        sctx.lineTo(waveX + w, y);
+      }
+      sctx.lineTo(waveX + 90, sH);
+      sctx.lineTo(waveX - 90, sH);
+      sctx.closePath();
+      const wg = sctx.createLinearGradient(waveX - 90, 0, waveX + 90, 0);
+      wg.addColorStop(0, 'rgba(26,74,122,0.96)');
+      wg.addColorStop(0.38, 'rgba(45,120,185,0.88)');
+      wg.addColorStop(1, 'rgba(90,190,230,0.05)');
+      sctx.fillStyle = wg;
+      sctx.fill();
+
+      // ── Crest ──
+      sctx.beginPath();
+      for (let y = 0; y <= sH; y += 4) {
+        const w =
+          Math.sin(y * 0.024 + elapsed * 0.0035) * 26 +
+          Math.sin(y * 0.053 + elapsed * 0.0055) * 11 +
+          Math.cos(y * 0.013 + elapsed * 0.0025) * 15;
+        if (y === 0) sctx.moveTo(waveX + w, y);
+        else sctx.lineTo(waveX + w, y);
+      }
+      sctx.strokeStyle = 'rgba(255,255,255,0.72)';
+      sctx.lineWidth = 3;
+      sctx.stroke();
+
+      // ── Foam ──
+      foamParticles.forEach(p => {
+        const baseX = waveX;
+        if (!p.active && Math.random() < 0.08) {
+          p.active = true;
+          p.x = baseX + (Math.random() - 0.3) * 50;
+          p.y = Math.random() * sH;
+          p.life = 0.7 + Math.random() * 0.3;
+        }
+        if (p.active && p.life > 0) {
+          p.x += p.vx; p.y += p.vy; p.life -= p.decay;
+          sctx.globalAlpha = p.life * 0.65;
+          sctx.fillStyle = '#fff';
+          sctx.beginPath();
+          sctx.arc(p.x, p.y, p.r * Math.min(p.life + 0.3, 1), 0, Math.PI * 2);
+          sctx.fill();
+          sctx.globalAlpha = 1;
+        }
+        if (p.life <= 0) p.active = false;
+      });
+
+      // ── Fade out landing page itself as wave passes midpoint ──
+      const landingFade = Math.max(0, 1 - Math.max(0, (eased - 0.35) / 0.4));
+      landing.style.opacity = landingFade;
+
+      if (progress < 1.12) {
+        requestAnimationFrame(frame);
+      } else {
+        // All done — clean up
+        cancelAnimationFrame(landingRAF);
+        landing.style.display = 'none';
+        sweep.style.display = 'none';
+        loginScreen.style.zIndex = '8000';
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(frame);
+  };
+})();
+
+
+/* ── LOGIN SYSTEM ── */
+const PASSWORDS = {
+  'Emanuele': 'emanuelebarrel',
+  'Ashraf': 'ashrafgoofy',
+  'Louis': 'louiswipeout',
+  'Hikesh': 'hikeshgreenwave',
+  'Tarek': 'tarekriptide',
+  'Jack': 'jackpipeline',
+  'Ossama': 'ossamaduckdive',
+  'Nico': 'nicooffshore',
+  'Shyam': 'shyamcutback'
+};
+
+let currentUser = null;
+let selectedName = null;
+
+function selectName(btn, name) {
+  document.querySelectorAll('.name-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedName = name;
+  document.getElementById('pw-input').focus();
+  document.getElementById('login-error').textContent = '';
+  document.getElementById('pw-input').classList.remove('error');
+}
+
+function tryLogin() {
+  const pw = document.getElementById('pw-input').value.trim().toLowerCase();
+  const err = document.getElementById('login-error');
+  const input = document.getElementById('pw-input');
+  if (!selectedName) { err.textContent = 'Select your name first.'; return; }
+  if (pw === PASSWORDS[selectedName]) {
+    currentUser = selectedName;
+    sessionStorage.setItem('sriLankaUser', selectedName);
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('user-badge').style.display = 'inline-block';
+    document.getElementById('user-badge').textContent = selectedName === 'Emanuele' ? 'Emanuele 👑 · logout' : selectedName + ' · logout';
+    err.textContent = '';
+    input.classList.remove('error');
+    initCommunity();
+  } else {
+    err.textContent = 'Wrong password. Try again.';
+    input.classList.add('error');
+    input.value = '';
+    input.focus();
+  }
+}
+
+function logout() {
+  currentUser = null;
+  sessionStorage.removeItem('sriLankaUser');
+  document.getElementById('user-badge').style.display = 'none';
+  document.getElementById('login-screen').classList.remove('hidden');
+  selectedName = null;
+  document.querySelectorAll('.name-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('pw-input').value = '';
+  document.getElementById('login-error').textContent = '';
+}
+
+// Check if already logged in this session
+(function checkSession() {
+  const saved = sessionStorage.getItem('sriLankaUser');
+  if (saved && PASSWORDS[saved]) {
+    currentUser = saved;
+    selectedName = saved;
+    document.getElementById('user-badge').style.display = 'inline-block';
+    document.getElementById('user-badge').textContent = saved === 'Emanuele' ? 'Emanuele 👑 · logout' : saved + ' · logout';
+  } else {
+    // Show login after landing wave completes — hook into triggerWave
+    // login shown after wave via showLoginWithWave()
+  }
+  // Always init community (shows read-only if not logged in)
+  setTimeout(initCommunity, 500);
+})();
+
+/* ── COMMUNITY: SUGGESTIONS + POLL ── */
+const POLL_OPTIONS = [
+  { id: 'cooking', label: 'Sri Lankan cooking class with a local family' },
+  { id: 'motorbike_race', label: 'Motorbike race day between the group' },
+  { id: 'atv', label: 'ATV / quad biking through jungle' },
+  { id: 'kayak', label: 'Lagoon kayaking at sunrise' },
+  { id: 'kataragama', label: 'Kataragama fire walking ceremony at night' },
+  { id: 'lighthouse', label: 'Lighthouse Beach day trip (45 min north)' },
+  { id: 'paragliding', label: 'Paragliding' },
+  { id: 'whitewater', label: 'White water rafting at Kitulgala' },
+  { id: 'freediving', label: 'Freediving lesson' },
+  { id: 'adams_peak', label: "Adam's Peak night hike to the summit" },
+];
+
+async function initCommunity() {
+  await loadSuggestions();
+  await loadPoll();
+  updateSuggestionUI();
+  updatePollUI();
+}
+
+// ── SUGGESTIONS ──
+let suggestions = [];
+
+async function loadSuggestions() {
+  try {
+    const result = await window.storage.get('mandem_suggestions');
+    suggestions = result ? JSON.parse(result.value) : [];
+  } catch(e) { suggestions = []; }
+  renderSuggestions();
+}
+
+async function submitSuggestion() {
+  if (!currentUser) return;
+  const text = document.getElementById('suggestion-text').value.trim();
+  if (!text) return;
+  const entry = {
+    author: currentUser,
+    text,
+    time: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+  };
+  suggestions.unshift(entry);
+  try {
+    await window.storage.set('mandem_suggestions', JSON.stringify(suggestions.slice(0, 50)));
+  } catch(e) {}
+  document.getElementById('suggestion-text').value = '';
+  renderSuggestions();
+}
+
+function renderSuggestions() {
+  const feed = document.getElementById('suggestion-feed');
+  if (!suggestions.length) {
+    feed.innerHTML = '<div class="feed-empty">No suggestions yet. Be the first.</div>';
+    return;
+  }
+  feed.innerHTML = suggestions.map(s => `
+    <div class="suggestion-item">
+      <div class="si-author">${s.author === 'Emanuele' ? 'Emanuele 👑' : s.author}</div>
+      <div class="si-text">${s.text}</div>
+      <div class="si-time">${s.time}</div>
+    </div>
+  `).join('');
+}
+
+function updateSuggestionUI() {
+  const form = document.getElementById('suggestion-form');
+  const note = document.getElementById('suggestion-login-note');
+  if (currentUser) {
+    form.style.display = 'block';
+    note.style.display = 'none';
+  } else {
+    form.style.display = 'none';
+    note.style.display = 'block';
+  }
+}
+
+// ── POLL ──
+let pollVotes = {}; // { optionId: count }
+let userVotes = {}; // { optionId: bool } for current user
+
+async function loadPoll() {
+  try {
+    const result = await window.storage.get('mandem_poll_votes');
+    pollVotes = result ? JSON.parse(result.value) : {};
+  } catch(e) { pollVotes = {}; }
+  // load user votes from session
+  try {
+    const uv = sessionStorage.getItem('mandem_user_votes_' + (currentUser || 'anon'));
+    userVotes = uv ? JSON.parse(uv) : {};
+  } catch(e) { userVotes = {}; }
+  renderPoll();
+}
+
+async function vote(optionId) {
+  if (!currentUser) return;
+  if (userVotes[optionId]) {
+    // unvote
+    userVotes[optionId] = false;
+    pollVotes[optionId] = Math.max(0, (pollVotes[optionId] || 1) - 1);
+  } else {
+    userVotes[optionId] = true;
+    pollVotes[optionId] = (pollVotes[optionId] || 0) + 1;
+  }
+  sessionStorage.setItem('mandem_user_votes_' + currentUser, JSON.stringify(userVotes));
+  try {
+    await window.storage.set('mandem_poll_votes', JSON.stringify(pollVotes));
+  } catch(e) {}
+  renderPoll();
+}
+
+function renderPoll() {
+  const container = document.getElementById('poll-items');
+  const loginNote = document.getElementById('poll-login-note');
+  if (!currentUser) {
+    loginNote.style.display = 'block';
+    container.style.display = 'none';
+    return;
+  }
+  loginNote.style.display = 'none';
+  container.style.display = 'block';
+  const maxVotes = Math.max(1, ...POLL_OPTIONS.map(o => pollVotes[o.id] || 0));
+  container.innerHTML = POLL_OPTIONS.map(o => {
+    const votes = pollVotes[o.id] || 0;
+    const pct = Math.round((votes / maxVotes) * 100);
+    const voted = userVotes[o.id] ? 'voted' : '';
+    return `
+      <div class="poll-item">
+        <div class="poll-label">
+          <span class="poll-option-text">${o.label}</span>
+          <button class="poll-vote-btn ${voted}" onclick="vote('${o.id}')">
+            ${voted ? '✓ voted' : 'vote'}
+          </button>
+        </div>
+        <div class="poll-bar-wrap">
+          <div class="poll-bar-bg"><div class="poll-bar-fill" style="width:${pct}%"></div></div>
+          <span class="poll-count">${votes}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updatePollUI() {
+  renderPoll();
+}
+
+</script>
+</body>
+</html>
