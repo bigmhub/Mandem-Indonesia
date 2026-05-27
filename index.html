@@ -1890,7 +1890,12 @@ function logout() {
   setTimeout(initCommunity, 500);
 })();
 
-/* ── COMMUNITY: SUGGESTIONS + POLL ── */
+/* ── COMMUNITY: SUGGESTIONS + POLL (JSONBin backend) ── */
+const JSONBIN_KEY = '$2a$10$F8r/dBVLis5j.bZoM4KOGuJP8dvd4UFyqAuqmYlbfRMg/jp3..VB.';
+const SUGGESTIONS_BIN = '6a1718c58ef04f453821eb0d';
+const POLL_BIN = '6a17189ff47d5c455c3daa78';
+const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b';
+
 const POLL_OPTIONS = [
   { id: 'cooking', label: 'Sri Lankan cooking class with a local family' },
   { id: 'motorbike_race', label: 'Motorbike race day between the group' },
@@ -1904,6 +1909,25 @@ const POLL_OPTIONS = [
   { id: 'adams_peak', label: "Adam's Peak night hike to the summit" },
 ];
 
+async function jsonbinGet(binId) {
+  const res = await fetch(`${JSONBIN_BASE}/${binId}/latest`, {
+    headers: { 'X-Master-Key': JSONBIN_KEY }
+  });
+  const data = await res.json();
+  return data.record;
+}
+
+async function jsonbinSet(binId, data) {
+  await fetch(`${JSONBIN_BASE}/${binId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': JSONBIN_KEY
+    },
+    body: JSON.stringify(data)
+  });
+}
+
 async function initCommunity() {
   await loadSuggestions();
   await loadPoll();
@@ -1916,8 +1940,8 @@ let suggestions = [];
 
 async function loadSuggestions() {
   try {
-    const result = await window.storage.get('mandem_suggestions');
-    suggestions = result ? JSON.parse(result.value) : [];
+    const data = await jsonbinGet(SUGGESTIONS_BIN);
+    suggestions = data.items || [];
   } catch(e) { suggestions = []; }
   renderSuggestions();
 }
@@ -1926,6 +1950,9 @@ async function submitSuggestion() {
   if (!currentUser) return;
   const text = document.getElementById('suggestion-text').value.trim();
   if (!text) return;
+  const btn = document.getElementById('suggestion-submit');
+  btn.disabled = true;
+  btn.textContent = 'Posting...';
   const entry = {
     author: currentUser,
     text,
@@ -1933,9 +1960,11 @@ async function submitSuggestion() {
   };
   suggestions.unshift(entry);
   try {
-    await window.storage.set('mandem_suggestions', JSON.stringify(suggestions.slice(0, 50)));
+    await jsonbinSet(SUGGESTIONS_BIN, { items: suggestions.slice(0, 50) });
   } catch(e) {}
   document.getElementById('suggestion-text').value = '';
+  btn.disabled = false;
+  btn.textContent = 'Post suggestion';
   renderSuggestions();
 }
 
@@ -1967,15 +1996,14 @@ function updateSuggestionUI() {
 }
 
 // ── POLL ──
-let pollVotes = {}; // { optionId: count }
-let userVotes = {}; // { optionId: bool } for current user
+let pollVotes = {};
+let userVotes = {};
 
 async function loadPoll() {
   try {
-    const result = await window.storage.get('mandem_poll_votes');
-    pollVotes = result ? JSON.parse(result.value) : {};
+    const data = await jsonbinGet(POLL_BIN);
+    pollVotes = data.votes || {};
   } catch(e) { pollVotes = {}; }
-  // load user votes from session
   try {
     const uv = sessionStorage.getItem('mandem_user_votes_' + (currentUser || 'anon'));
     userVotes = uv ? JSON.parse(uv) : {};
@@ -1985,8 +2013,9 @@ async function loadPoll() {
 
 async function vote(optionId) {
   if (!currentUser) return;
+  const btn = document.querySelector(`[onclick="vote('${optionId}')"]`);
+  if (btn) { btn.disabled = true; btn.textContent = '...'; }
   if (userVotes[optionId]) {
-    // unvote
     userVotes[optionId] = false;
     pollVotes[optionId] = Math.max(0, (pollVotes[optionId] || 1) - 1);
   } else {
@@ -1995,7 +2024,7 @@ async function vote(optionId) {
   }
   sessionStorage.setItem('mandem_user_votes_' + currentUser, JSON.stringify(userVotes));
   try {
-    await window.storage.set('mandem_poll_votes', JSON.stringify(pollVotes));
+    await jsonbinSet(POLL_BIN, { votes: pollVotes });
   } catch(e) {}
   renderPoll();
 }
