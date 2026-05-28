@@ -1890,11 +1890,8 @@ function logout() {
   setTimeout(initCommunity, 500);
 })();
 
-/* ── COMMUNITY: SUGGESTIONS + POLL (JSONBin backend) ── */
-const JSONBIN_KEY = '$2a$10$F8r/dBVLis5j.bZoM4KOGuJP8dvd4UFyqAuqmYlbfRMg/jp3..VB.';
-const SUGGESTIONS_BIN = '6a1718c58ef04f453821eb0d';
-const POLL_BIN = '6a17189ff47d5c455c3daa78';
-const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b';
+/* ── COMMUNITY: SUGGESTIONS + POLL (Firebase Realtime DB) ── */
+const FB_URL = 'https://mandem-sri-lanka-default-rtdb.europe-west1.firebasedatabase.app';
 
 const POLL_OPTIONS = [
   { id: 'cooking', label: 'Sri Lankan cooking class with a local family' },
@@ -1909,23 +1906,30 @@ const POLL_OPTIONS = [
   { id: 'adams_peak', label: "Adam's Peak night hike to the summit" },
 ];
 
-async function jsonbinGet(binId) {
-  const res = await fetch(`${JSONBIN_BASE}/${binId}/latest`, {
-    headers: { 'X-Master-Key': JSONBIN_KEY }
-  });
-  const data = await res.json();
-  return data.record;
+async function fbGet(path) {
+  const res = await fetch(`${FB_URL}/${path}.json`);
+  if (!res.ok) throw new Error('Firebase GET failed: ' + res.status);
+  return await res.json();
 }
 
-async function jsonbinSet(binId, data) {
-  await fetch(`${JSONBIN_BASE}/${binId}`, {
+async function fbSet(path, data) {
+  const res = await fetch(`${FB_URL}/${path}.json`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Master-Key': JSONBIN_KEY
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
+  if (!res.ok) throw new Error('Firebase PUT failed: ' + res.status);
+  return await res.json();
+}
+
+async function fbPush(path, data) {
+  const res = await fetch(`${FB_URL}/${path}.json`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('Firebase POST failed: ' + res.status);
+  return await res.json();
 }
 
 async function initCommunity() {
@@ -1940,9 +1944,19 @@ let suggestions = [];
 
 async function loadSuggestions() {
   try {
-    const data = await jsonbinGet(SUGGESTIONS_BIN);
-    suggestions = data.items || [];
-  } catch(e) { suggestions = []; }
+    const data = await fbGet('suggestions');
+    if (data) {
+      // Firebase returns object with push keys — convert to array and sort newest first
+      suggestions = Object.entries(data)
+        .map(([key, val]) => ({ ...val, _key: key }))
+        .sort((a, b) => b.timestamp - a.timestamp);
+    } else {
+      suggestions = [];
+    }
+  } catch(e) {
+    console.error('Load suggestions error:', e);
+    suggestions = [];
+  }
   renderSuggestions();
 }
 
@@ -1956,16 +1970,18 @@ async function submitSuggestion() {
   const entry = {
     author: currentUser,
     text,
+    timestamp: Date.now(),
     time: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
   };
-  suggestions.unshift(entry);
   try {
-    await jsonbinSet(SUGGESTIONS_BIN, { items: suggestions.slice(0, 50) });
-  } catch(e) {}
-  document.getElementById('suggestion-text').value = '';
+    await fbPush('suggestions', entry);
+    document.getElementById('suggestion-text').value = '';
+    await loadSuggestions();
+  } catch(e) {
+    console.error('Submit suggestion error:', e);
+  }
   btn.disabled = false;
   btn.textContent = 'Post suggestion';
-  renderSuggestions();
 }
 
 function renderSuggestions() {
@@ -2001,9 +2017,12 @@ let userVotes = {};
 
 async function loadPoll() {
   try {
-    const data = await jsonbinGet(POLL_BIN);
-    pollVotes = data.votes || {};
-  } catch(e) { pollVotes = {}; }
+    const data = await fbGet('poll');
+    pollVotes = data || {};
+  } catch(e) {
+    console.error('Load poll error:', e);
+    pollVotes = {};
+  }
   try {
     const uv = sessionStorage.getItem('mandem_user_votes_' + (currentUser || 'anon'));
     userVotes = uv ? JSON.parse(uv) : {};
@@ -2013,8 +2032,6 @@ async function loadPoll() {
 
 async function vote(optionId) {
   if (!currentUser) return;
-  const btn = document.querySelector(`[onclick="vote('${optionId}')"]`);
-  if (btn) { btn.disabled = true; btn.textContent = '...'; }
   if (userVotes[optionId]) {
     userVotes[optionId] = false;
     pollVotes[optionId] = Math.max(0, (pollVotes[optionId] || 1) - 1);
@@ -2024,8 +2041,10 @@ async function vote(optionId) {
   }
   sessionStorage.setItem('mandem_user_votes_' + currentUser, JSON.stringify(userVotes));
   try {
-    await jsonbinSet(POLL_BIN, { votes: pollVotes });
-  } catch(e) {}
+    await fbSet('poll', pollVotes);
+  } catch(e) {
+    console.error('Vote error:', e);
+  }
   renderPoll();
 }
 
