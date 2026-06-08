@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandem Indonesia · Aug 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --bg: #f7f3ee;
+  --surface: #ffffff;
+  --surface2: #f0ebe3;
+  --surface3: #e8e0d5;
+  --border: rgba(40,25,10,0.08);
+  --border2: rgba(40,25,10,0.14);
+  --text: #1a1208;
+  --text2: #6b5a42;
+  --text3: #a8937a;
+  --accent: #d4601a;
+  --accent2: #b84e10;
+  --green: #2a8a4a;
+  --blue: #1a6b9a;
+  --coral: #e05040;
+  --teal: #1a9a8a;
+  --ocean: #1a5a7a;
+  --sand: #e8d5b0;
+  --jungle: #2a6a2a;
+  --font-display: 'Syne', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-mono: 'DM Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font-display);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--accent);color:#000}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:#f0ebe3}
+::-webkit-scrollbar-thumb{background:#c8b89a;border-radius:2px}
+
+/* LOADING */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+.loader-text{font-family:var(--font-mono);font-size:11px;letter-spacing:0.3em;color:var(--text3);text-transform:uppercase}
+.loader-bar{width:200px;height:1px;background:var(--surface3);overflow:hidden}
+.loader-fill{height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.6s ease}
+.loader-title{font-family:var(--font-serif);font-size:clamp(1.5rem,4vw,2.5rem);color:var(--text);font-style:italic;opacity:0}
+
+/* PROGRESS */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#0d4a6e,#d4601a);z-index:1000;transition:width 0.1s linear;width:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;background:rgba(247,243,238,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-mono);font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text3);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-status{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.1em}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2rem 4rem;overflow:hidden;padding-top:56px;background:linear-gradient(160deg,#0d4a6e 0%,#1a7a5e 35%,#d4601a 75%,#e8c87a 100%)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(40,25,10,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(40,25,10,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 100%,transparent 0%,#000 100%)}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,96,26,0.08) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,90,122,0.06) 0%,transparent 70%);bottom:100px;left:-50px;pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:1200px;width:100%}
+.hero-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:0.3em;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-bottom:1.5rem;opacity:0}
+.hero-title{font-family:var(--font-serif);font-size:clamp(4rem,12vw,9rem);line-height:0.9;color:#fff;margin-bottom:1rem;opacity:0}
+.hero-title em{font-style:italic;color:#f5d98a}
+.hero-title .outline{-webkit-text-stroke:1px rgba(255,255,255,0.3);color:transparent}
+.hero-sub{font-family:var(--font-mono);font-size:13px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;max-width:400px;line-height:1.8;margin-bottom:3rem;opacity:0}
+.hero-stats{display:flex;gap:0;border:1px solid rgba(255,255,255,0.2);max-width:600px;opacity:0;background:rgba(0,0,0,0.15);backdrop-filter:blur(10px)}
+.hero-stat{flex:1;padding:1.25rem 1.5rem;border-right:1px solid rgba(255,255,255,0.15)}
+.hero-stat:last-child{border-right:none}
+.hs-val{font-family:var(--font-serif);font-size:1.8rem;color:#fff;line-height:1}
+.hs-label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
+.hero-scroll{position:absolute;bottom:2rem;right:2rem;font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.2em;text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+.hero-scroll::before{content:'';width:1px;height:40px;background:linear-gradient(rgba(255,255,255,0.5),transparent)}
+
+/* COUNTDOWN */
+#countdown-section{padding:1.5rem 2rem;background:linear-gradient(135deg,#0d4a6e,#1a7a5e);border-top:none;border-bottom:none}
+.countdown-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.countdown-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.6);text-transform:uppercase}
+.countdown-digits{display:flex;gap:1rem;align-items:center}
+.cd-unit{text-align:center}
+.cd-num{font-family:var(--font-serif);font-size:2rem;color:#f5d98a;line-height:1;font-style:italic}
+.cd-label{font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase}
+.cd-sep{font-family:var(--font-serif);font-size:1.5rem;color:rgba(255,255,255,0.3);font-style:italic;padding-bottom:8px}
+.countdown-flight{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.06em}
+.countdown-flight span{color:#f5d98a}
+
+/* COMMAND CENTRE */
+#command{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.section-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:0.25em;color:var(--ocean, #1a5a7a);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);color:var(--text);margin-bottom:3rem;line-height:1.1}
+.section-title em{font-style:italic;color:var(--text2)}
+.command-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.cmd-card{background:var(--surface);padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s}
+.cmd-card:hover{background:var(--surface2)}
+.cmd-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity 0.2s}
+.cmd-card:hover::before{opacity:1}
+.cmd-icon{font-size:1.2rem;margin-bottom:0.75rem;display:block}
+.cmd-val{font-family:var(--font-serif);font-size:2rem;color:var(--text);line-height:1;font-style:italic}
+.cmd-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-top:6px}
+.cmd-sub{font-family:var(--font-mono);font-size:11px;color:var(--text2);margin-top:4px}
+.status-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.badge-confirmed{background:rgba(74,222,128,0.1);color:var(--green);border:1px solid rgba(74,222,128,0.2)}
+.badge-pending{background:rgba(232,201,126,0.1);color:var(--accent);border:1px solid rgba(232,201,126,0.2)}
+.badge-tbc{background:rgba(138,134,128,0.1);color:var(--text3);border:1px solid var(--border)}
+
+/* THE CREW */
+#crew{padding:4rem 2rem;border-top:1px solid var(--border)}
+.crew-inner{max-width:1200px;margin:0 auto}
+.crew-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.crew-card{background:var(--surface);padding:1.25rem 1rem;text-align:center;transition:background 0.2s;cursor:default}
+.crew-card:hover{background:var(--surface2)}
+.crew-avatar{width:40px;height:40px;border-radius:50%;background:var(--surface3);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1rem;color:var(--accent);font-style:italic;border:1px solid var(--border2)}
+.crew-name{font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;color:var(--text2);text-transform:uppercase}
+.crew-king{font-size:10px;display:block;margin-top:2px}
+
+/* TIMELINE */
+#timeline{padding:4rem 2rem;border-top:1px solid var(--border)}
+.timeline-inner{max-width:1200px;margin:0 auto}
+.timeline-nav{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap}
+.tl-filter{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--border);color:var(--text3);background:transparent;cursor:pointer;transition:all 0.15s}
+.tl-filter.active,.tl-filter:hover{border-color:var(--accent);color:var(--accent)}
+.timeline-list{display:flex;flex-direction:column;gap:1px}
+.tl-day{background:var(--surface);border:1px solid var(--border);overflow:hidden;transition:border-color 0.2s}
+.tl-day:hover{border-color:var(--border2)}
+.tl-day-header{display:grid;grid-template-columns:80px 1fr auto auto;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;cursor:pointer;transition:background 0.15s}
+.tl-day-header:hover{background:var(--surface2)}
+.tl-date{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;line-height:1.4}
+.tl-date strong{display:block;font-family:var(--font-serif);font-size:1.4rem;color:var(--text);font-weight:400;font-style:italic;line-height:1}
+.tl-day-title{font-size:14px;font-weight:500;color:var(--text)}
+.tl-day-sub{font-family:var(--font-mono);font-size:11px;color:var(--text3);margin-top:2px}
+.tl-badges{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.tl-tog{font-size:16px;color:var(--text3);transition:transform 0.25s;margin-left:8px;font-family:var(--font-mono)}
+.tl-tog.open{transform:rotate(45deg)}
+.tl-body{display:none;padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.tl-body.open{display:block}
+.tl-items{display:flex;flex-direction:column;gap:0;margin-top:1rem}
+.tl-item{display:flex;gap:1rem;padding:8px 0;border-bottom:1px solid var(--border)}
+.tl-item:last-child{border-bottom:none}
+.tl-time{font-family:var(--font-mono);font-size:10px;color:var(--accent);min-width:50px;padding-top:2px;flex-shrink:0;letter-spacing:0.05em}
+.tl-content{}
+.tl-main{font-size:13px;color:var(--text);line-height:1.4}
+.tl-note{font-family:var(--font-mono);font-size:11px;color:var(--text3);margin-top:2px;line-height:1.5}
+.tl-tip{background:rgba(232,201,126,0.06);border-left:2px solid var(--accent2);padding:8px 12px;margin-top:8px;font-family:var(--font-mono);font-size:11px;color:var(--text2);line-height:1.6}
+.tl-tip b{color:var(--accent)}
+
+/* DESTINATIONS */
+#destinations{padding:4rem 2rem;border-top:1px solid var(--border)}
+.dest-inner{max-width:1200px;margin:0 auto}
+.dest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.dest-card{background:var(--surface);padding:2rem;position:relative;overflow:hidden;transition:background 0.2s;cursor:default}
+.dest-card:hover{background:var(--surface2)}
+.dest-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+.dest-name{font-family:var(--font-serif);font-size:2rem;color:var(--text);line-height:1.1;margin-bottom:0.5rem;font-style:italic}
+.dest-dates{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;margin-bottom:1rem}
+.dest-desc{font-family:var(--font-mono);font-size:11px;color:var(--text3);line-height:1.7;margin-bottom:1.25rem}
+.dest-tags{display:flex;gap:5px;flex-wrap:wrap}
+.dest-tag{font-family:var(--font-mono);font-size:10px;padding:3px 8px;border:1px solid var(--border);color:var(--text3);letter-spacing:0.05em}
+.dest-accent{position:absolute;bottom:0;right:0;font-family:var(--font-serif);font-size:6rem;color:rgba(255,255,255,0.02);line-height:1;pointer-events:none;font-style:italic}
+
+/* FLIGHTS */
+#flights{padding:4rem 2rem;border-top:1px solid var(--border)}
+.flights-inner{max-width:1200px;margin:0 auto}
+.flight-card{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-bottom:1px;display:grid;grid-template-columns:1fr auto 1fr auto;align-items:center;gap:2rem;transition:background 0.15s}
+.flight-card:hover{background:var(--surface2)}
+.fl-port{font-family:var(--font-serif);font-size:2.5rem;color:var(--text);font-style:italic;line-height:1}
+.fl-city{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.fl-time{font-family:var(--font-mono);font-size:13px;color:var(--accent);letter-spacing:0.08em}
+.fl-mid{text-align:center}
+.fl-arrow{font-size:1.2rem;color:var(--text3);margin-bottom:4px;display:block}
+.fl-duration{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.1em}
+.fl-airline{font-family:var(--font-mono);font-size:11px;color:var(--text2)}
+.fl-info{text-align:right}
+.fl-ref{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.08em}
+
+/* BUDGET */
+#budget{padding:4rem 2rem;border-top:1px solid var(--border)}
+.budget-inner{max-width:1200px;margin:0 auto}
+.budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.budget-spent{background:var(--surface);border:1px solid var(--border);padding:2rem}
+.budget-item{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+.budget-item:last-child{border-bottom:none}
+.bi-name{font-family:var(--font-mono);font-size:12px;color:var(--text2);letter-spacing:0.06em}
+.bi-status{font-family:var(--font-mono);font-size:10px;padding:2px 7px;border-radius:2px}
+.bi-amount{font-family:var(--font-serif);font-size:1.1rem;color:var(--text);font-style:italic}
+.budget-bar-section{background:var(--surface);border:1px solid var(--border);padding:2rem}
+.budget-total-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.budget-total-val{font-family:var(--font-serif);font-size:3rem;color:var(--text);font-style:italic;line-height:1;margin-bottom:0.5rem}
+.budget-total-sub{font-family:var(--font-mono);font-size:11px;color:var(--text3);margin-bottom:2rem}
+.budget-bar-wrap{margin-bottom:1rem}
+.budget-bar-label{display:flex;justify-content:space-between;margin-bottom:6px}
+.bbl-name{font-family:var(--font-mono);font-size:11px;color:var(--text2)}
+.bbl-pct{font-family:var(--font-mono);font-size:11px;color:var(--text3)}
+.budget-bar-bg{height:4px;background:var(--surface3);border-radius:2px;overflow:hidden}
+.budget-bar-fill{height:100%;border-radius:2px;transition:width 1s ease}
+
+/* PACKING */
+#packing{padding:4rem 2rem;border-top:1px solid var(--border)}
+.packing-inner{max-width:1200px;margin:0 auto}
+.packing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.pack-col{background:var(--surface);padding:1.5rem}
+.pack-col-title{font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+.pack-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.pack-item:last-child{border-bottom:none}
+.pack-check{width:14px;height:14px;border:1px solid var(--border2);border-radius:2px;flex-shrink:0;margin-top:2px;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:8px}
+.pack-item.checked .pack-check{background:var(--green);border-color:var(--green);color:#000}
+.pack-item.checked .pack-text{color:var(--text3);text-decoration:line-through}
+.pack-text{font-family:var(--font-mono);font-size:11px;color:var(--text2);line-height:1.4;letter-spacing:0.03em}
+
+/* EMERGENCY */
+#emergency{padding:4rem 2rem;border-top:1px solid var(--border)}
+.emergency-inner{max-width:1200px;margin:0 auto}
+.emergency-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.em-card{background:var(--surface);padding:1.5rem}
+.em-title{font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;color:var(--coral);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+.em-item{padding:5px 0;border-bottom:1px solid var(--border)}
+.em-item:last-child{border-bottom:none}
+.em-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.06em}
+.em-val{font-family:var(--font-mono);font-size:12px;color:var(--text2);margin-top:2px}
+
+/* ROUTE MAP */
+#route{padding:4rem 2rem;border-top:1px solid var(--border)}
+.route-inner{max-width:1200px;margin:0 auto}
+.route-visual{margin-top:2rem;background:var(--surface);border:1px solid var(--border);padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;overflow-x:auto;position:relative}
+.route-visual::before{content:'';position:absolute;top:50%;left:3rem;right:3rem;height:1px;background:linear-gradient(90deg,var(--border),var(--accent2),var(--border));transform:translateY(-50%);z-index:0}
+.route-stop{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;flex-shrink:0}
+.rs-dot{width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);position:relative}
+.rs-dot.active{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.rs-dot.tbc{border-color:var(--text3)}
+.rs-name{font-family:var(--font-mono);font-size:10px;color:var(--text2);letter-spacing:0.08em;text-transform:uppercase;text-align:center;max-width:80px}
+.rs-dates{font-family:var(--font-mono);font-size:9px;color:var(--text3);text-align:center}
+.rs-type{font-size:14px;margin-bottom:4px}
+.route-connector{display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;z-index:1;flex-shrink:0}
+.rc-type{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 2rem;margin-top:4rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:var(--font-serif);font-size:1.5rem;color:var(--text);font-style:italic}
+.footer-meta{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.1em}
+
+/* BACK TO TOP */
+#back-top{position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all 0.2s;font-family:var(--font-mono);font-size:14px;color:var(--text3);z-index:400}
+#back-top.visible{opacity:1}
+#back-top:hover{border-color:var(--accent);color:var(--accent)}
+
+/* BADGE TYPES */
+.b-surf{background:rgba(45,212,191,0.08);color:var(--teal);border:1px solid rgba(45,212,191,0.15);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+.b-volcano{background:rgba(251,113,133,0.08);color:var(--coral);border:1px solid rgba(251,113,133,0.15);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+.b-travel{background:rgba(138,134,128,0.08);color:var(--text3);border:1px solid var(--border);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+.b-adventure{background:rgba(232,201,126,0.08);color:var(--accent);border:1px solid rgba(232,201,126,0.15);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+.b-night{background:rgba(96,165,250,0.08);color:var(--blue);border:1px solid rgba(96,165,250,0.15);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+.b-free{background:rgba(74,222,128,0.08);color:var(--green);border:1px solid rgba(74,222,128,0.15);font-family:var(--font-mono);font-size:9px;letter-spacing:0.06em;padding:2px 7px;text-transform:uppercase}
+
+@media(max-width:768px){
+  nav .nav-links{display:none}
+  .command-grid{grid-template-columns:repeat(2,1fr)}
+  .crew-grid{grid-template-columns:repeat(4,1fr)}
+  .dest-grid{grid-template-columns:1fr}
+  .flight-card{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .budget-grid{grid-template-columns:1fr}
+  .packing-grid{grid-template-columns:repeat(2,1fr)}
+  .emergency-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column}
+  .hero-stats .hero-stat{border-right:none;border-bottom:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-title">Mandem Indonesia</div>
+  <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+  <div class="loader-text">Loading trip dashboard...</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">🇮🇩 Mandem · Aug 2026</span>
+  <ul class="nav-links">
+    <li><a href="#command">Overview</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#flights">Flights</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#packing">Packing</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-status"><div class="status-dot"></div><span>68 days to go</span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Mandem Trip · Vol. I · August 2026</p>
+    <h1 class="hero-title">Indo<em>nesia.</em><br><span class="outline">16 days.</span></h1>
+    <p class="hero-sub">Lombok surf base · Mount Rinjani · Gili Islands · Guangzhou · Bali. Lombok · Rinjani · Guangzhou · Bali.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-val">7</div><div class="hs-label">The Mandem</div></div>
+      <div class="hero-stat"><div class="hs-val">17</div><div class="hs-label">Days</div></div>
+      <div class="hero-stat"><div class="hs-val">5</div><div class="hs-label">Destinations</div></div>
+      <div class="hero-stat"><div class="hs-val">3,726<span style="font-size:1rem">m</span></div><div class="hs-label">Peak altitude</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- COUNTDOWN -->
+<div id="countdown-section">
+  <div class="countdown-inner">
+    <div>
+      <div class="countdown-label">Departure countdown</div>
+      <div class="countdown-flight">London Gatwick → Bali · <span>14 Aug 2026 · 22:10</span></div>
+    </div>
+    <div class="countdown-digits">
+      <div class="cd-unit"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMAND CENTRE -->
+<section id="command">
+  <p class="section-eyebrow">Trip overview</p>
+  <h2 class="section-title">The <em>command centre.</em></h2>
+  <div class="command-grid">
+    <div class="cmd-card">
+      <span class="cmd-icon">✈️</span>
+      <div class="cmd-val">2</div>
+      <div class="cmd-label">Flights booked</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-confirmed">● Confirmed</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">🏠</span>
+      <div class="cmd-val">1</div>
+      <div class="cmd-label">Villa confirmed</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-confirmed">● Adeng Adeng House</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">⛰️</span>
+      <div class="cmd-val">1</div>
+      <div class="cmd-label">Trek booked</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-confirmed">● Rudy Trekker</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">🏄</span>
+      <div class="cmd-val">TBC</div>
+      <div class="cmd-label">Surf instructor</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-pending">● In progress</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">🏨</span>
+      <div class="cmd-val">3 TBC</div>
+      <div class="cmd-label">Accommodation</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-tbc">Bali · China · Bali end</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">💰</span>
+      <div class="cmd-val">£1,622</div>
+      <div class="cmd-label">Spent so far pp</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-pending">● Flights + trek + villa</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">🛥️</span>
+      <div class="cmd-val">TBC</div>
+      <div class="cmd-label">Phinisi charter</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-tbc">Under consideration</span></div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-icon">🎒</span>
+      <div class="cmd-val">Aug 14</div>
+      <div class="cmd-label">Departure date</div>
+      <div class="cmd-sub" style="margin-top:8px"><span class="status-badge badge-confirmed">● LGW 22:10</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CREW -->
+<section id="crew" style="border-top:1px solid var(--border)">
+  <div class="crew-inner">
+    <p class="section-eyebrow">The mandem</p>
+    <h2 class="section-title">Who's <em>going.</em></h2>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-avatar">E</div>
+        <div class="crew-name">Emanuele</div>
+        <span class="crew-king">👑</span>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">A</div>
+        <div class="crew-name">Ashraf</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">L</div>
+        <div class="crew-name">Louis</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">H</div>
+        <div class="crew-name">Hikesh</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">T</div>
+        <div class="crew-name">Tarek</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">J</div>
+        <div class="crew-name">Jack</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-avatar">S</div>
+        <div class="crew-name">Shyam</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE MAP -->
+<section id="route" style="border-top:1px solid var(--border)">
+  <div class="route-inner">
+    <p class="section-eyebrow">Journey route</p>
+    <h2 class="section-title">The <em>route.</em></h2>
+    <div class="route-visual">
+      <div class="route-stop">
+        <div class="rs-type">✈️</div>
+        <div class="rs-dot active"></div>
+        <div class="rs-name">London LGW</div>
+        <div class="rs-dates">Aug 14</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">18h30m</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🌴</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">Bali DPS</div>
+        <div class="rs-dates">Aug 15</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">47min ✈</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🏄</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">Lombok</div>
+        <div class="rs-dates">Aug 16–23</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">day trip</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🐢</div>
+        <div class="rs-dot tbc"></div>
+        <div class="rs-name">Gili T</div>
+        <div class="rs-dates">Day trip</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">transfer</div></div>
+      <div class="route-stop">
+        <div class="rs-type">⛰️</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">Rinjani</div>
+        <div class="rs-dates">Aug 24–26</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">fast boat</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🎉</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">Bali</div>
+        <div class="rs-dates">Aug 26–28</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">✈ 08:40</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🌏</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">Guangzhou</div>
+        <div class="rs-dates">Aug 29–30</div>
+      </div>
+      <div class="route-connector"><div class="rc-type">24hr layover</div></div>
+      <div class="route-stop">
+        <div class="rs-type">🏠</div>
+        <div class="rs-dot"></div>
+        <div class="rs-name">London LGW</div>
+        <div class="rs-dates">Aug 30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="timeline-inner">
+    <p class="section-eyebrow">Day by day</p>
+    <h2 class="section-title">The full <em>itinerary.</em></h2>
+    <div class="timeline-nav">
+      <button class="tl-filter active" onclick="filterDays('all',this)">All days</button>
+      <button class="tl-filter" onclick="filterDays('surf',this)">🏄 Surf</button>
+      <button class="tl-filter" onclick="filterDays('rinjani',this)">⛰️ Rinjani</button>
+      <button class="tl-filter" onclick="filterDays('travel',this)">✈️ Travel</button>
+      <button class="tl-filter" onclick="filterDays('adventure',this)">🔥 Adventure</button>
+    </div>
+    <div class="timeline-list" id="timeline-list">
+
+      <!-- DAY 1 -->
+      <div class="tl-day" data-tags="travel">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>14</strong>Aug · Fri</div>
+          <div><div class="tl-day-title">Depart London — China Southern</div><div class="tl-day-sub">London Gatwick → Guangzhou → Bali</div></div>
+          <div class="tl-badges"><span class="b-travel">Travel</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">20:00</div><div><div class="tl-main">Arrive Gatwick — check in, security</div><div class="tl-note">Check-in opens 13 Aug. Booking ID: 3224355351</div></div></div>
+            <div class="tl-item"><div class="tl-time">22:10</div><div><div class="tl-main">Depart London Gatwick — China Southern</div><div class="tl-note">1 stop via Guangzhou. 18hrs 30 mins total.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Tip:</b> China Southern via Guangzhou. All 7 on the same booking — Booking ID 3224355351. Seats allocated, luggage included.</div>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="tl-day" data-tags="travel">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>15</strong>Aug · Sat</div>
+          <div><div class="tl-day-title">In transit → Arrive Bali</div><div class="tl-day-sub">Via Guangzhou transit · land Denpasar 23:40</div></div>
+          <div class="tl-badges"><span class="b-travel">Travel</span><span class="b-adventure">China</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Transit</div><div><div class="tl-main">Guangzhou transit stop</div><div class="tl-note">Short stop on the outbound. The 24hr Guangzhou experience is on the way HOME (Aug 29-30) — that's when you explore the city.</div></div></div>
+            <div class="tl-item"><div class="tl-time">23:40</div><div><div class="tl-main">Arrive Denpasar Bali (DPS)</div><div class="tl-note">Visa on arrival for UK citizens. Airport hotel or transfer to Canggu for the night.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Guangzhou:</b> Canton Tower, Pearl River evening cruise, Shamian Island, dim sum on Shangxiajiu pedestrian street. Unexpected bonus day.</div>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="tl-day" data-tags="travel surf">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>16</strong>Aug · Sun</div>
+          <div><div class="tl-day-title">Fly to Lombok — check into villa</div><div class="tl-day-sub">Bali → Lombok · Adeng Adeng House</div></div>
+          <div class="tl-badges"><span class="b-travel">Travel</span><span class="b-surf">Surf intro</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Wings Air / TransNusa — Bali to Lombok (47 mins)</div><div class="tl-note">Book on Traveloka or Trip.com. ~£25-40pp. Multiple morning departures from 07:00.</div></div></div>
+            <div class="tl-item"><div class="tl-time">10:00</div><div><div class="tl-main">Arrive Lombok International (LOP) — transfer to Adeng Adeng House, Kuta</div><div class="tl-note">4 bedrooms, pool, central Kuta Lombok. Jalan Baturiti. Superhost rated 4.54★</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Rent motorbikes — explore Kuta</div><div class="tl-note">~£4/day per bike. Rent for the week. Find food spots, sort board hire, explore the strip.</div></div></div>
+            <div class="tl-item"><div class="tl-time">17:00</div><div><div class="tl-main">Optional sunset session — Selong Belanak</div><div class="tl-note">First look at your surf break. Even just paddling out is worth it.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Dinner at Kuta night market</div><div class="tl-note">Pick your fish, watch it grilled. £3-4pp.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Villa:</b> Adeng Adeng House — 200m², 7×3m pool, 4 bedrooms. Next to Guru Cafe, gym, restaurants. Private entrance, 24/7 team. Airbnb booking confirmed.</div>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>17</strong>Aug · Mon</div>
+          <div><div class="tl-day-title">First surf session + Tanjung Aan</div><div class="tl-day-sub">Selong Belanak · cliff jumping · coastal ride</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Adventure</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Instructor session — Selong Belanak (2hrs)</div><div class="tl-note">Wide gentle bay, sandy bottom, slow rolling waves. Best beginner break in Lombok.</div></div></div>
+            <div class="tl-item"><div class="tl-time">11:00</div><div><div class="tl-main">Villa — pool recovery, lunch</div><div class="tl-note">Surfing in 30°C is more exhausting than it looks. Rest without guilt.</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:00</div><div><div class="tl-main">Motorbike to Tanjung Aan — cliff jumping</div><div class="tl-note">10 mins from Kuta. Double bay, white sand, cliff jumping off the headland into crystal clear water.</div></div></div>
+            <div class="tl-item"><div class="tl-time">17:00</div><div><div class="tl-main">Coastal motorbike ride back — every viewpoint</div><div class="tl-note">South Lombok coast at golden hour. Stop everywhere.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 5 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>18</strong>Aug · Tue</div>
+          <div><div class="tl-day-title">Surf + Gerupuk boat session</div><div class="tl-day-sub">7 breaks, 1 bay, local fishing boat</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Boat</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Instructor session — first green wave attempts</div><div class="tl-note">The breakthrough session. Instructors push you into unbroken waves for the first time.</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:00</div><div><div class="tl-main">Gerupuk Bay boat surf session</div><div class="tl-note">7 different breaks in one bay accessed by local fishing boat. Instructor picks the right break. ~£10pp.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Kuta night market — fresh grilled seafood</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Gerupuk:</b> Book through your instructor — they know the local fishermen. £8-12pp including the boat for 2hrs.</div>
+        </div>
+      </div>
+
+      <!-- DAY 6 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>19</strong>Aug · Wed</div>
+          <div><div class="tl-day-title">Surf + paragliding + bat cave sunset</div><div class="tl-day-sub">Tandem flight · thousands of bats at dusk</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Paragliding</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Instructor session — Selong Belanak</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:00</div><div><div class="tl-main">Tandem paragliding — Merese Hill or Selong Belanak</div><div class="tl-note">Skylancing Lombok. Views across the mountains and coastline. No experience needed. ~£40-60pp.</div></div></div>
+            <div class="tl-item"><div class="tl-time">17:30</div><div><div class="tl-main">Bat cave at sunset</div><div class="tl-note">Thousands of bats exit the cave at dusk flying overhead like a river against the sky. One of the most surreal free experiences in Lombok. 20 mins from Kuta.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 7 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>20</strong>Aug · Thu</div>
+          <div><div class="tl-day-title">Surf + Sasak village + Desert Point</div><div class="tl-day-sub">Cultural immersion · world's best wave (to watch)</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Culture</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Free surf — no instructor, consolidate</div><div class="tl-note">Some will want a rest morning. Fine.</div></div></div>
+            <div class="tl-item"><div class="tl-time">11:00</div><div><div class="tl-main">Sasak traditional village — Sade or Rambitan</div><div class="tl-note">Original Lombok culture, traditional weaving, authentic architecture. Free to visit with a local guide. Fascinating.</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:00</div><div><div class="tl-main">Desert Point (Bangko Bangko) — watch from the rocks</div><div class="tl-note">One of the best left-hand barrels on earth. 2hrs from Kuta. You can't surf it yet but watching it is extraordinary. The road there is half the experience.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 8 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>21</strong>Aug · Fri</div>
+          <div><div class="tl-day-title">Surf + north Lombok waterfalls</div><div class="tl-day-sub">Tiu Kelep · Sendang Gile · jungle swimming</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Nature</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Instructor session — push to ceiling</div><div class="tl-note">Stringing multiple green wave rides per session. Focus on consistency.</div></div></div>
+            <div class="tl-item"><div class="tl-time">11:30</div><div><div class="tl-main">Drive north to Senaru — ~1.5hrs</div><div class="tl-note">Road passes through rice terraces and Sasak villages. Stop for photos.</div></div></div>
+            <div class="tl-item"><div class="tl-time">13:00</div><div><div class="tl-main">Tiu Kelep + Sendang Gile waterfalls</div><div class="tl-note">Twin waterfalls fed by Rinjani's slopes. Tiu Kelep — swim into a pool behind the curtain of water. Entry ~£3pp.</div></div></div>
+            <div class="tl-item"><div class="tl-time">16:00</div><div><div class="tl-main">Drive back to Kuta</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 9 -->
+      <div class="tl-day" data-tags="surf adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>22</strong>Aug · Sat</div>
+          <div><div class="tl-day-title">Surf + Project Hiu + Gili T day trip</div><div class="tl-day-sub">Shark conservation · turtles · island hop</div></div>
+          <div class="tl-badges"><span class="b-surf">Surf</span><span class="b-adventure">Wildlife</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Final Lombok instructor session — get it filmed</div><div class="tl-note">Book a local surf photographer for this morning. ~£20-30 for the session. You'll want footage.</div></div></div>
+            <div class="tl-item"><div class="tl-time">11:00</div><div><div class="tl-main">Project Hiu shark conservation trip</div><div class="tl-note">Full morning on the water supporting local fishermen transitioning to eco-tourism. ~£40pp. projecthiu.com</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:30</div><div><div class="tl-main">Optional: Fast boat to Gili Trawangan day trip — 30 mins</div><div class="tl-note">Turtle Point snorkelling (free), sunset swings, one drink on the strip. Back by evening.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Pack for Rinjani — early night</div><div class="tl-note">Rudy's guesthouse tomorrow evening. Pack light — porters carry everything heavy.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 10 -->
+      <div class="tl-day" data-tags="travel rinjani">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>23</strong>Aug · Sun</div>
+          <div><div class="tl-day-title">Transfer to Senaru — Rudy's guesthouse</div><div class="tl-day-sub">Rinjani eve · briefing · early night</div></div>
+          <div class="tl-badges"><span class="b-volcano">Rinjani eve</span><span class="b-travel">Transfer</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Free morning — last villa swim, pack bags</div><div class="tl-note">Check out by 11am. Leave non-essential bags at Rudy's storage.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Transfer to Senaru village — ~2hrs north</div><div class="tl-note">Rudy's guesthouse. Hot and cold water, air con, WiFi. Pre-trek briefing from guides.</div></div></div>
+            <div class="tl-item"><div class="tl-time">17:00</div><div><div class="tl-main">Optional: Sendang Gile waterfall visit — 3hrs before sunset</div><div class="tl-note">As per Rudy's itinerary — if time allows on Day 0.</div></div></div>
+            <div class="tl-item"><div class="tl-time">20:00</div><div><div class="tl-main">Early night — 06:00 start tomorrow</div><div class="tl-note">Eat well, hydrate, sleep. The next 3 days are physical.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Rudy Trekker:</b> 3D2N Deluxe package · $285pp · 2 guides + 7 porters · All meals, water, camping gear, park entry included · Aug 24-26 confirmed.</div>
+        </div>
+      </div>
+
+      <!-- DAY 11 -->
+      <div class="tl-day" data-tags="rinjani">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>24</strong>Aug · Mon</div>
+          <div><div class="tl-day-title">Rinjani Day 1 — ascent to crater rim</div><div class="tl-day-sub">Sembalun → grasslands → cloud forest → 2,639m</div></div>
+          <div class="tl-badges"><span class="b-volcano">Rinjani D1</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">06:00</div><div><div class="tl-main">Transfer to Sembalun trailhead — register at RIC</div><div class="tl-note">Sembalun Lawang 1,156m. Meet guides and porters. Briefing on route, safety and environmental rules.</div></div></div>
+            <div class="tl-item"><div class="tl-time">08:00</div><div><div class="tl-main">Begin ascent — open grassland, Pos 1 → Pos 2 → Pos 3</div><div class="tl-note">Gentle start through cattle grazing land. Casuarina forest begins. Wild macaque monkeys visible.</div></div></div>
+            <div class="tl-item"><div class="tl-time">16:00</div><div><div class="tl-main">Arrive crater rim camp — Plawangan II, 2,639m</div><div class="tl-note">Temperature drops to 5-10°C. Set up camp. Guides cook dinner over the fire.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Dinner at the rim — best stargazing of the trip</div><div class="tl-note">Zero light pollution at 2,600m. Sleep early — 03:00 alarm tomorrow.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Pack for the rim:</b> Warm jacket (5-10°C at night), gloves, hat, headlamp, tiger balm for muscles. The porters carry the tents, food and heavy gear.</div>
+        </div>
+      </div>
+
+      <!-- DAY 12 -->
+      <div class="tl-day" data-tags="rinjani">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>25</strong>Aug · Tue</div>
+          <div><div class="tl-day-title">Rinjani Day 2 — summit · lake · hot springs</div><div class="tl-day-sub">3,726m summit · Segara Anak crater lake · geothermal springs</div></div>
+          <div class="tl-badges"><span class="b-volcano">Rinjani D2</span><span class="b-adventure">Summit</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">03:00</div><div><div class="tl-main">Summit push begins — 3hrs on volcanic scree</div><div class="tl-note">Steep, exposed, cold. Optional but almost everyone does it. The summit at 3,726m with the sunrise is the single best moment of the trip.</div></div></div>
+            <div class="tl-item"><div class="tl-time">06:00</div><div><div class="tl-main">Summit sunrise — Bali's Agung visible on the horizon</div><div class="tl-note">Segara Anak crater lake below, Sumbawa behind you. The Wallace Line visible from the top of Indonesia.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Descend to crater lake Segara Anak — 2,000m</div><div class="tl-note">2-3hrs descent on steep trail. The lake is extraordinary — Mt Baru active volcano sits in the middle of it.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Swim in hot springs — geothermal healing waters</div><div class="tl-note">Pilgrimage hot springs believed to have healing powers. Locals come specifically for these. Completely surreal.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Late PM</div><div><div class="tl-main">Climb to Senaru crater rim — Plawangan I, 2,461m</div><div class="tl-note">2.5hrs up from the lake. Second camp at the rim. Dinner, recovery, sleep.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 13 -->
+      <div class="tl-day" data-tags="rinjani travel">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>26</strong>Aug · Wed</div>
+          <div><div class="tl-day-title">Rinjani Day 3 — descend to Senaru · to Bali</div><div class="tl-day-sub">Jungle descent · fast boat · Bali arrival</div></div>
+          <div class="tl-badges"><span class="b-volcano">Rinjani D3</span><span class="b-travel">Bali</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">07:00</div><div><div class="tl-main">Breakfast — begin descent through jungle</div><div class="tl-note">7hrs through dense tropical forest. Black ebony leaf monkey (lutung) possible sighting. Pass Batu Penyesalan stone.</div></div></div>
+            <div class="tl-item"><div class="tl-time">14:00</div><div><div class="tl-main">Trek ends at Senaru village — 601m</div><div class="tl-note">Transfer out. Collect bags from Rudy's storage. Legs will feel every step.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Fast boat Lombok → Bali</div><div class="tl-note">Via Padang Bai. ~2hrs. Or fly Lombok to Bali (47 mins, Wings Air).</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Arrive Bali — check into Canggu</div><div class="tl-note">You've descended a volcano. Cold beer. Proper bed. Air con. You've earned all of it.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Tip your porters:</b> $10-15pp is standard and genuinely appreciated. They carried your camp up a 3,726m volcano in flip flops.</div>
+        </div>
+      </div>
+
+      <!-- DAY 14 -->
+      <div class="tl-day" data-tags="adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>27</strong>Aug · Thu</div>
+          <div><div class="tl-day-title">Bali — Uluwatu · Canggu · big night out</div><div class="tl-day-sub">Kecak fire dance · send-off dinner · Friday night</div></div>
+          <div class="tl-badges"><span class="b-adventure">Bali</span><span class="b-night">Night out</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Sleep in — full recovery day</div><div class="tl-note">Bodies have descended 3,726m. Rest is not optional.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Uluwatu Temple + Kecak fire dance at sunset</div><div class="tl-note">Clifftop temple above the Indian Ocean. The Kecak fire dance at sunset is one of the great Bali experiences. Starts around 18:00, book tickets in advance.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Send-off dinner — Canggu restaurant strip</div><div class="tl-note">Best food of the trip. Canggu has extraordinary restaurants. Satu Satu, The Lawn, Finns Beach Club.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Night</div><div><div class="tl-main">Big night out — Canggu bar strip 🍻</div><div class="tl-note">Old Man's, Finns, Motel Mexicola. Friday night in Canggu is the best send-off possible.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 15 -->
+      <div class="tl-day" data-tags="adventure">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>28</strong>Aug · Fri</div>
+          <div><div class="tl-day-title">Bali — last day · Tanah Lot · final dinner</div><div class="tl-day-sub">Last sunset · early night · Guangzhou eve</div></div>
+          <div class="tl-badges"><span class="b-adventure">Bali</span><span class="b-travel">Pre-flight</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Canggu beach morning — last swim</div><div class="tl-note">Echo Beach or Batu Bolong. Optional surf if conditions are right.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div><div class="tl-main">Tanah Lot sea temple at sunset</div><div class="tl-note">Dramatic temple on a rock in the ocean. 45 mins from Canggu. Iconic Bali image.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Final meal in Bali — wherever the group agrees</div><div class="tl-note">Make it a good one. Debrief the trip.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Night</div><div><div class="tl-main">Transfer to Ngurah Rai airport for early check in</div><div class="tl-note">Flight departs 08:40 — be at airport by 06:00 minimum. Check-in opens Aug 28.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 16 -->
+      <div class="tl-day" data-tags="travel">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>29</strong>Aug · Sat</div>
+          <div><div class="tl-day-title">Depart Bali → Guangzhou</div><div class="tl-day-sub">DPS 08:40 → Guangzhou · 24hr layover begins</div></div>
+          <div class="tl-badges"><span class="b-travel">Travel</span><span class="b-adventure">China</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">06:00</div><div><div class="tl-main">Ngurah Rai airport — check in, security</div><div class="tl-note">Check-in opens 28 Aug. Booking ID: 3224355351. Be there by 06:00 for 08:40 departure.</div></div></div>
+            <div class="tl-item"><div class="tl-time">08:40</div><div><div class="tl-main">Depart Denpasar (DPS) — China Southern</div><div class="tl-note">Via Guangzhou. The 24hr Guangzhou layover begins on arrival.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Arrive GZ</div><div><div class="tl-main">Arrive Guangzhou — begin 24hr layover</div><div class="tl-note">Check transit visa requirements for UK citizens entering China. China Southern sometimes offers free city tours for long layovers — ask at the transit desk.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div><div class="tl-main">Explore Guangzhou — dinner, city walk</div><div class="tl-note">Canton Tower light show at night. Pearl River cruise. Shangxiajiu pedestrian street for food. Dim sum is extraordinary here.</div></div></div>
+          </div>
+          <div class="tl-tip"><b>Guangzhou:</b> Canton Tower · Pearl River evening cruise · Shamian Island colonial architecture · Dim sum on Shangxiajiu pedestrian street. Unplanned bonus city.</div>
+        </div>
+      </div>
+
+      <!-- DAY 17 -->
+      <div class="tl-day" data-tags="travel">
+        <div class="tl-day-header" onclick="toggleDay(this)">
+          <div class="tl-date"><strong>30</strong>Aug · Sun</div>
+          <div><div class="tl-day-title">Guangzhou → London Gatwick</div><div class="tl-day-sub">Fly home · arrive LGW 19:40</div></div>
+          <div class="tl-badges"><span class="b-travel">Travel</span></div>
+          <span class="tl-tog">+</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">Morning</div><div><div class="tl-main">Final Guangzhou morning — last dim sum</div><div class="tl-note">One last proper meal before the long flight home.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Airport</div><div><div class="tl-main">Guangzhou Baiyun International — check in</div><div class="tl-note">China Southern connecting flight back to London Gatwick.</div></div></div>
+            <div class="tl-item"><div class="tl-time">19:40</div><div><div class="tl-main">Arrive London Gatwick — home</div><div class="tl-note">Trip complete. 16 days. Lombok surfed. Rinjani summited. Guangzhou eaten. Stories for life.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="dest-inner">
+    <p class="section-eyebrow">Destination breakdown · 4 stops</p>
+    <h2 class="section-title">Where you're <em>going.</em></h2>
+    <div class="dest-grid">
+
+      <div class="dest-card">
+        <div class="dest-accent">Bali</div>
+        <div class="dest-num">01 / 04</div>
+        <div class="dest-name">Bali</div>
+        <div class="dest-dates">Aug 15 · arrival night + Aug 26-28</div>
+        <div class="dest-desc">Arrival decompress and trip send-off. Canggu for nightlife and restaurants. Uluwatu for the Kecak fire dance. Tanah Lot for the final sunset. The best possible bookends to a Lombok-heavy trip.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Canggu</span>
+          <span class="dest-tag">Uluwatu</span>
+          <span class="dest-tag">Nightlife</span>
+          <span class="dest-tag">Food</span>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-accent">Lombok</div>
+        <div class="dest-num">02 / 04</div>
+        <div class="dest-name">Lombok</div>
+        <div class="dest-dates">Aug 16 – 23 · 8 nights</div>
+        <div class="dest-desc">The core of the trip. Adeng Adeng House as the villa base in Kuta. Selong Belanak and Gerupuk for surf. Tanjung Aan for cliff jumping. Desert Point for watching the world's best wave. North Lombok waterfalls.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Kuta Lombok</span>
+          <span class="dest-tag">Selong Belanak</span>
+          <span class="dest-tag">Gerupuk</span>
+          <span class="dest-tag">Desert Point</span>
+          <span class="dest-tag">Villa base</span>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-accent">Rinjani</div>
+        <div class="dest-num">03 / 04</div>
+        <div class="dest-name">Rinjani</div>
+        <div class="dest-dates">Aug 23 eve – 26 · 3D2N</div>
+        <div class="dest-desc">The headline adventure. 3,726m active volcano. Sembalun to Senaru route. Crater rim camp at 2,639m, 3am summit push, crater lake and geothermal hot springs. 2 guides, 7 porters. Rudy Trekker confirmed.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">3,726m summit</span>
+          <span class="dest-tag">Crater lake</span>
+          <span class="dest-tag">Hot springs</span>
+          <span class="dest-tag">Rudy Trekker</span>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-accent">Guangzhou</div>
+        <div class="dest-num">04 / 04</div>
+        <div class="dest-name">Guangzhou</div>
+        <div class="dest-dates">Aug 29–30 · 24hr layover</div>
+        <div class="dest-desc">The bonus city. 24 hours in China on the return leg. Canton Tower light show, Pearl River evening cruise, Shamian Island colonial architecture, and dim sum on Shangxiajiu pedestrian street. One of the great unplanned additions to any trip.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Canton Tower</span>
+          <span class="dest-tag">Pearl River</span>
+          <span class="dest-tag">Dim sum</span>
+          <span class="dest-tag">Shamian Island</span>
+          <span class="dest-tag">24hr layover</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FLIGHTS -->
+<section id="flights">
+  <div class="flights-inner">
+    <p class="section-eyebrow">Flight information</p>
+    <h2 class="section-title">Getting <em>there.</em></h2>
+
+    <div class="flight-card">
+      <div>
+        <div class="fl-port">LGW</div>
+        <div class="fl-city">London Gatwick</div>
+        <div class="fl-time">22:10 · Fri 14 Aug</div>
+      </div>
+      <div class="fl-mid">
+        <span class="fl-arrow">→</span>
+        <div class="fl-duration">18h 30m · 1 stop</div>
+        <div class="fl-airline">China Southern · CZ</div>
+      </div>
+      <div>
+        <div class="fl-port">DPS</div>
+        <div class="fl-city">Denpasar Bali</div>
+        <div class="fl-time">23:40 · Sat 15 Aug</div>
+      </div>
+      <div class="fl-info">
+        <div class="fl-ref">Booking ID</div>
+        <div class="fl-ref" style="color:var(--accent);font-size:13px">3224355351</div>
+        <div style="margin-top:8px"><span class="status-badge badge-confirmed">● Confirmed · 7 pax</span></div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div>
+        <div class="fl-port">DPS</div>
+        <div class="fl-city">Denpasar Bali</div>
+        <div class="fl-time">08:40 · Sat 29 Aug</div>
+      </div>
+      <div class="fl-mid">
+        <span class="fl-arrow">→</span>
+        <div class="fl-duration">42h · 1 stop</div>
+        <div class="fl-airline">China Southern · CZ</div>
+      </div>
+      <div>
+        <div class="fl-port">LGW</div>
+        <div class="fl-city">London Gatwick</div>
+        <div class="fl-time">19:40 · Sun 30 Aug</div>
+      </div>
+      <div class="fl-info">
+        <div class="fl-ref">Via Guangzhou</div>
+        <div class="fl-ref" style="color:var(--text2);font-size:12px">24hr layover</div>
+        <div style="margin-top:8px"><span class="status-badge badge-confirmed">● Confirmed · 7 pax</span></div>
+      </div>
+    </div>
+
+    <div class="flight-card" style="border-top:1px solid var(--border)">
+      <div>
+        <div class="fl-port">DPS</div>
+        <div class="fl-city">Bali Denpasar</div>
+        <div class="fl-time">Morning · Sun 16 Aug</div>
+      </div>
+      <div class="fl-mid">
+        <span class="fl-arrow">→</span>
+        <div class="fl-duration">47 mins</div>
+        <div class="fl-airline">Wings Air / TransNusa</div>
+      </div>
+      <div>
+        <div class="fl-port">LOP</div>
+        <div class="fl-city">Lombok International</div>
+        <div class="fl-time">~09:00 · Sun 16 Aug</div>
+      </div>
+      <div class="fl-info">
+        <div class="fl-ref">~£25-40pp</div>
+        <div class="fl-ref" style="color:var(--text2);font-size:11px">Book on Traveloka</div>
+        <div style="margin-top:8px"><span class="status-badge badge-pending">● To book</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACCOMMODATION -->
+<section style="padding:4rem 2rem;border-top:1px solid var(--border)">
+  <div style="max-width:1200px;margin:0 auto">
+    <p class="section-eyebrow">Where you're sleeping</p>
+    <h2 class="section-title">Accommo<em>dation.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem">
+
+      <div class="dest-card">
+        <div class="dest-num">Lombok · Aug 16-23</div>
+        <div class="dest-name" style="font-size:1.4rem">Adeng Adeng House</div>
+        <div class="dest-dates">Kuta Lombok · 8 nights</div>
+        <div class="dest-desc">200m² private villa. 7×3m pool. 4 bedrooms (6 beds + 2 doubles upstairs). 3 bathrooms. Fully equipped kitchen, 30m² terrace overlooking pool. Central Kuta — next to Guru Cafe. 24/7 team. Superhost rated 4.54★ · 83 reviews.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Private pool</span>
+          <span class="dest-tag">4 bedrooms</span>
+          <span class="dest-tag">Central Kuta</span>
+          <span class="dest-tag">✅ Confirmed</span>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-num">Rinjani · Aug 23-24</div>
+        <div class="dest-name" style="font-size:1.4rem">Rudy's Guesthouse</div>
+        <div class="dest-dates">Senaru village · 1 night</div>
+        <div class="dest-desc">Pre-trek accommodation included in Rudy Trekker package. Senaru village at the base of Rinjani. Hot and cold water, air conditioning, WiFi. Trek briefing evening, early 06:00 departure next morning.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Included in trek</span>
+          <span class="dest-tag">Senaru</span>
+          <span class="dest-tag">✅ Confirmed</span>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-num">Bali · Aug 15 + 26-28</div>
+        <div class="dest-name" style="font-size:1.4rem">Bali TBC</div>
+        <div class="dest-dates">Canggu · 3 nights total</div>
+        <div class="dest-desc">ghts (Aug 26-28) — book a good villa or hotel in Canggu near the bar strip. West side for nightlife access.</div>
+        <div class="dest-tags">
+          <span class="dest-tag">Canggu</span>
+          <span class="dest-tag">West side</span>
+          <span class="dest-tag">⏳ To book</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <div class="budget-inner">
+    <p class="section-eyebrow">Money</p>
+    <h2 class="section-title">The <em>numbers.</em></h2>
+    <div class="budget-grid">
+      <div class="budget-spent">
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)">Spent so far · per person</div>
+        <div class="budget-item">
+          <div><div class="bi-name">Return flights — China Southern</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);margin-top:2px">LGW → DPS → LGW via Guangzhou</div></div>
+          <div style="text-align:right"><div class="bi-amount">£1,300</div><span class="status-badge badge-confirmed" style="font-size:9px">Paid</span></div>
+        </div>
+        <div class="budget-item">
+          <div><div class="bi-name">Mount Rinjani trek — Rudy Trekker</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);margin-top:2px">3D2N Deluxe · $285pp · 30% deposit due</div></div>
+          <div style="text-align:right"><div class="bi-amount">£212</div><span class="status-badge badge-pending" style="font-size:9px">Deposit due</span></div>
+        </div>
+        <div class="budget-item">
+          <div><div class="bi-name">Adeng Adeng House villa</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);margin-top:2px">8 nights · Kuta Lombok · confirmed</div></div>
+          <div style="text-align:right"><div class="bi-amount">£110–400</div><span class="status-badge badge-confirmed" style="font-size:9px">Booked</span></div>
+        </div>
+        <div class="budget-item" style="border-bottom:none">
+          <div><div class="bi-name" style="color:var(--text)">Total confirmed spend</div></div>
+          <div style="text-align:right"><div class="bi-amount" style="font-size:1.4rem;color:var(--accent)">~£1,622pp</div></div>
+        </div>
+      </div>
+      <div class="budget-bar-section">
+        <div class="budget-total-label">Budget remaining estimate</div>
+        <div class="budget-total-val">£1,378</div>
+        <div class="budget-total-sub">per person · vs £3,000 target</div>
+        <div class="budget-bar-wrap"><div class="budget-bar-label"><span class="bbl-name">Flights</span><span class="bbl-pct">43%</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:43%;background:var(--accent)"></div></div></div>
+        <div class="budget-bar-wrap"><div class="budget-bar-label"><span class="bbl-name">Accommodation</span><span class="bbl-pct">17%</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:17%;background:var(--teal)"></div></div></div>
+        <div class="budget-bar-wrap"><div class="budget-bar-label"><span class="bbl-name">Rinjani trek</span><span class="bbl-pct">7%</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:7%;background:var(--coral)"></div></div></div>
+        <div class="budget-bar-wrap"><div class="budget-bar-label"><span class="bbl-name">Remaining budget</span><span class="bbl-pct">33%</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:33%;background:var(--surface3)"></div></div></div>
+        <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem">Estimated remaining costs pp</div>
+          <div class="budget-item" style="padding:4px 0"><span class="bi-name">Surf instructor (6 sessions)</span><span class="bi-amount" style="font-size:0.9rem">~£80–120</span></div>
+          <div class="budget-item" style="padding:4px 0"><span class="bi-name">Bali accommodation (3 nights)</span><span class="bi-amount" style="font-size:0.9rem">~£50–100</span></div>
+          <div class="budget-item" style="padding:4px 0"><span class="bi-name">Food + drink (16 days)</span><span class="bi-amount" style="font-size:0.9rem">~£250–350</span></div>
+          <div class="budget-item" style="padding:4px 0"><span class="bi-name">Activities + adventures</span><span class="bi-amount" style="font-size:0.9rem">~£150–200</span></div>
+          <div class="budget-item" style="padding:4px 0;border-bottom:none"><span class="bi-name">Transport (bikes, boats, taxis)</span><span class="bi-amount" style="font-size:0.9rem">~£80–120</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKING -->
+<section id="packing">
+  <div class="packing-inner">
+    <p class="section-eyebrow">Pre-trip prep</p>
+    <h2 class="section-title">Packing & <em>preparation.</em></h2>
+    <div class="packing-grid">
+      <div class="pack-col">
+        <div class="pack-col-title">🏄 Surf essentials</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Rash vest (long sleeve)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Reef boots (Gili T / reef breaks)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Waterproof sunscreen SPF50+</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Waterproof bag / dry bag</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">GoPro or action camera</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Surf shorts x3</div></div>
+      </div>
+      <div class="pack-col">
+        <div class="pack-col-title">⛰️ Rinjani specific</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Warm jacket (5-10°C at rim)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Gloves + warm hat</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Head torch + spare batteries</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Trekking / trail running shoes</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Long trousers + base layer</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Tiger Balm / muscle spray</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Insect repellent</div></div>
+      </div>
+      <div class="pack-col">
+        <div class="pack-col-title">🧳 General travel</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Passport (valid 6+ months)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Travel insurance (Genki)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Indonesia visa on arrival (airport)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">USD cash (trek tips + deposits)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Local SIM (buy at Bali airport)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Power bank + travel adapter</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Lightweight quick-dry towel</div></div>
+      </div>
+      <div class="pack-col">
+        <div class="pack-col-title">💊 Health + safety</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Seasickness tablets (boat crossings)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Ibuprofen + paracetamol</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Rehydration sachets (Rinjani)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Blister plasters</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Antiseptic cream (reef cuts)</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Imodium / diarrhea tablets</div></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-check"></div><div class="pack-text">Personal medication</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency">
+  <div class="emergency-inner">
+    <p class="section-eyebrow">Emergency information</p>
+    <h2 class="section-title">Stay <em>safe.</em></h2>
+    <div class="emergency-grid">
+      <div class="em-card">
+        <div class="em-title">🇬🇧 UK contacts</div>
+        <div class="em-item"><div class="em-label">British Embassy Jakarta</div><div class="em-val">+62 21 2356 5200</div></div>
+        <div class="em-item"><div class="em-label">British Consulate Bali</div><div class="em-val">+62 361 270 601</div></div>
+        <div class="em-item"><div class="em-label">FCDO Emergency (24hr)</div><div class="em-val">+44 20 7008 5000</div></div>
+      </div>
+      <div class="em-card">
+        <div class="em-title">🇮🇩 Indonesia emergency</div>
+        <div class="em-item"><div class="em-label">Indonesia emergency</div><div class="em-val">112</div></div>
+        <div class="em-item"><div class="em-label">Police</div><div class="em-val">110</div></div>
+        <div class="em-item"><div class="em-label">Ambulance</div><div class="em-val">118 / 119</div></div>
+        <div class="em-item"><div class="em-label">Rinjani Search & Rescue</div><div class="em-val">Via Rudy Trekker contact</div></div>
+      </div>
+      <div class="em-card">
+        <div class="em-title">🏥 Nearest hospitals</div>
+        <div class="em-item"><div class="em-label">Kuta Lombok</div><div class="em-val">RSUD Praya · +62 370 621 125</div></div>
+        <div class="em-item"><div class="em-label">Mataram (main)</div><div class="em-val">RSUP NTB · +62 370 622 254</div></div>
+        <div class="em-item"><div class="em-label">Bali (international)</div><div class="em-val">BIMC Hospital · +62 361 761 263</div></div>
+      </div>
+      <div class="em-card">
+        <div class="em-title">🛡️ Insurance — Genki</div>
+        <div class="em-item"><div class="em-label">Provider</div><div class="em-val">genki.world</div></div>
+        <div class="em-item"><div class="em-label">125cc motorbikes without licence</div><div class="em-val">✓ Covered</div></div>
+        <div class="em-item"><div class="em-label">Medical cover</div><div class="em-val">€1M + evacuation</div></div>
+        <div class="em-item"><div class="em-label">Cost</div><div class="em-val">~£45pp for trip duration</div></div>
+      </div>
+      <div class="em-card">
+        <div class="em-title">⚠️ Safety notes</div>
+        <div class="em-item"><div class="em-label">Motorbikes</div><div class="em-val">Always wear helmet. Photo bike before renting. Never give passport as deposit.</div></div>
+        <div class="em-item"><div class="em-label">Rinjani</div><div class="em-val">Stay with guides. Hydrate. Summit is optional.</div></div>
+        <div class="em-item"><div class="em-label">Ocean</div><div class="em-val">Rip currents at Mawi + exposed breaks. Follow instructor only.</div></div>
+      </div>
+      <div class="em-card">
+        <div class="em-title">📋 Key references</div>
+        <div class="em-item"><div class="em-label">Flights booking ID</div><div class="em-val">3224355351</div></div>
+        <div class="em-item"><div class="em-label">Rudy Trekker</div><div class="em-val">rudytrekker.com</div></div>
+        <div class="em-item"><div class="em-label">Villa — Adeng Adeng House</div><div class="em-val">Jl. Baturiti, Kuta Lombok</div></div>
+        <div class="em-item"><div class="em-label">Surf — Wesurf / Lucky</div><div class="em-val">wesurflombok.com · TBC</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Mandem Indonesia 🇮🇩</div>
+    <div class="footer-meta">Aug 14–30 2026 · 7 deep · London Gatwick · Booking ID 3224355351</div>
+  </div>
+</footer>
+
+<div id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// LOADER
+window.addEventListener('load', () => {
+  const fill = document.getElementById('loader-fill');
+  const loader = document.getElementById('loader');
+  const title = loader.querySelector('.loader-title');
+  gsap.to(title, {opacity:1, duration:0.6, delay:0.2});
+  gsap.to(fill, {scaleX:1, duration:1.2, ease:'power2.inOut', delay:0.3, onComplete: () => {
+    gsap.to(loader, {opacity:0, duration:0.5, delay:0.2, onComplete: () => {
+      loader.style.display = 'none';
+      initAnimations();
+    }});
+  }});
+});
+
+function initAnimations() {
+  gsap.to('.hero-eyebrow', {opacity:1, y:0, duration:0.8, delay:0.1, ease:'power3.out'});
+  gsap.to('.hero-title', {opacity:1, y:0, duration:1, delay:0.3, ease:'power3.out'});
+  gsap.to('.hero-sub', {opacity:1, y:0, duration:0.8, delay:0.5, ease:'power3.out'});
+  gsap.to('.hero-stats', {opacity:1, y:0, duration:0.8, delay:0.7, ease:'power3.out'});
+
+  gsap.utils.toArray('.cmd-card,.dest-card,.crew-card,.em-card,.pack-col').forEach((el, i) => {
+    gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, delay:(i%4)*0.08,
+      scrollTrigger:{trigger:el, start:'top 85%'}});
+  });
+
+  gsap.utils.toArray('.tl-day').forEach((el, i) => {
+    gsap.fromTo(el, {opacity:0, x:-20}, {opacity:1, x:0, duration:0.5, delay:i*0.03,
+      scrollTrigger:{trigger:el, start:'top 90%'}});
+  });
+
+  gsap.utils.toArray('.budget-bar-fill').forEach(bar => {
+    const w = bar.style.width; bar.style.width='0';
+    gsap.to(bar, {width:w, duration:1.2, ease:'power2.out',
+      scrollTrigger:{trigger:bar, start:'top 85%'}});
+  });
+
+  gsap.utils.toArray('.route-stop').forEach((el, i) => {
+    gsap.fromTo(el, {opacity:0, y:20}, {opacity:1, y:0, duration:0.5, delay:i*0.1,
+      scrollTrigger:{trigger:'.route-visual', start:'top 80%'}});
+  });
+
+  gsap.utils.toArray('.flight-card').forEach((el, i) => {
+    gsap.fromTo(el, {opacity:0, y:20}, {opacity:1, y:0, duration:0.5, delay:i*0.1,
+      scrollTrigger:{trigger:el, start:'top 85%'}});
+  });
+}
+
+// COUNTDOWN
+function updateCountdown() {
+  const target = new Date('2026-08-14T22:10:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) { ['days','hours','mins','secs'].forEach(id => document.getElementById('cd-'+id).textContent='00'); return; }
+  document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  const days = Math.floor(diff/86400000);
+  const navStatus = document.querySelector('.nav-status span');
+  if (navStatus) navStatus.textContent = days + ' days to go';
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const st = doc.scrollTop || document.body.scrollTop;
+  const sh = doc.scrollHeight - doc.clientHeight;
+  document.getElementById('progress-bar').style.width = (st/sh*100) + '%';
+  document.getElementById('back-top').classList.toggle('visible', st > 400);
+});
+
+// TIMELINE
+function toggleDay(header) {
+  const body = header.nextElementSibling;
+  const tog = header.querySelector('.tl-tog');
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  tog.classList.toggle('open', !open);
+}
+
+function filterDays(tag, btn) {
+  document.querySelectorAll('.tl-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tl-day').forEach(day => {
+    day.style.display = (tag === 'all' || (day.dataset.tags||'').includes(tag)) ? '' : 'none';
+  });
+}
+
+// PACKING
+function togglePack(item) {
+  item.classList.toggle('checked');
+  item.querySelector('.pack-check').textContent = item.classList.contains('checked') ? '✓' : '';
+}
+
+// MAGNETIC
+document.querySelectorAll('.tl-filter, #back-top').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    gsap.to(btn, {x:(e.clientX-r.left-r.width/2)*0.2, y:(e.clientY-r.top-r.height/2)*0.2, duration:0.3});
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, {x:0, y:0, duration:0.5, ease:'elastic.out(1,0.5)'}));
+});
+</script>
+</body>
+</html>
